@@ -46,6 +46,8 @@ class Supports {
 
 		remove_theme_support( 'block-templates' );
 
+		add_post_type_support( 'page', 'excerpt' );
+
 	}
 
 }

@@ -33,9 +33,11 @@ class Scripts {
 		$wsu_design_system_icons     = 'https://cdn.web.wsu.edu/designsystem/1.x/wsu-icons/dist/wsu-icons.bundle.css';
 		$wsu_design_system_css_path  = '/dist/bundles/wsu-design-system.css';
 		$wsu_design_system_js_path   = '/dist/bundles/wsu-design-system.js';
+
 		$wsu_design_system_host      = ( defined( 'WDS_LOCALHOST_URL' ) ) ? WDS_LOCALHOST_URL : 'https://cdn.web.wsu.edu/designsystem/' . $wds_version;
 		$wsu_design_system_css       = $wsu_design_system_host . $wsu_design_system_css_path;
 		$wsu_design_system_js        = $wsu_design_system_host . $wsu_design_system_js_path;
+		$wsu_design_system_js_init   = 'https://cdn.web.wsu.edu/designsystem/2.x/dist/bundles/wsu-design-system.init.js';
 
 		wp_enqueue_style( 'wsu_design_system_normalize', $wsu_design_system_normalize, array(), $theme_version );
 
@@ -43,7 +45,11 @@ class Scripts {
 
 		wp_enqueue_style( 'wsu_design_system_css', $wsu_design_system_css, array(), $theme_version );
 
+		wp_enqueue_style( 'wsu_design_system_css_wordpress', 'https://cdn.web.wsu.edu/designsystem/' . $wds_version . '/dist/bundles/wsu-design-system.wordpress.css', array(), $theme_version );
+
 		//wp_enqueue_style( 'wsu_design_system_temp', get_stylesheet_directory_uri() . '/temp-style.css', array(), $theme_version );
+
+		wp_enqueue_script( 'wsu_design_system_js_init', $wsu_design_system_js_init, array(), $theme_version, false );
 
 		wp_enqueue_script( 'wsu_design_system_js', $wsu_design_system_js, array(), $theme_version, true );
 

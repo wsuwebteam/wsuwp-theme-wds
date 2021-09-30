@@ -26,6 +26,11 @@ class Customizer_Template {
 		);
 
 		$templates = array(
+			'home' => array(
+				'label'             => 'Homepage',
+				'base'              => 'page',
+				'has_archive'       => false,
+			),
 			'page' => array(
 				'label'       => 'Page',
 				'base'        => 'single',
@@ -45,7 +50,8 @@ class Customizer_Template {
 		foreach ( $templates as $template_slug => $template_args ) {
 
 			$template_label = $template_args['label'];
-			$template_base = $template_args['base'];
+			$template_base  = $template_args['base'];
+			$unsupported = (array) Template::get_default( 'unsupported', $template_slug, $template_base );
 
 			$section_id = "wsu_wds_template_{$template_slug}_section";
 
@@ -124,34 +130,38 @@ class Customizer_Template {
 				)
 			);
 
-			$wp_customize->add_control(
-				"{$prefix}_{$template_slug}_hero_style_control",
-				array(
-					'settings'    => "{$prefix}_{$template_slug}_hero_style",
-					'type'        => 'select',
-					'section'     => $section_id,
-					'label'       => __( 'Hero Banner Style' ),
-					'choices'     => array(
-						'hero'   => 'Hero',
-						'figure' => 'Figure',
-						''       => 'None',
-					),
-				)
-			);
+			if ( ! in_array( 'hero', $unsupported ) ) {
 
-			$wp_customize->add_control(
-				"{$prefix}_{$template_slug}_hero_position_control",
-				array(
-					'settings'    => "{$prefix}_{$template_slug}_hero_position",
-					'type'        => 'select',
-					'section'     => $section_id,
-					'label'       => __( 'Hero Banner Position' ),
-					'choices'     => array(
-						'before'   => 'Before Title',
-						'after'    => 'After Title',
-					),
-				)
-			);
+				$wp_customize->add_control(
+					"{$prefix}_{$template_slug}_hero_style_control",
+					array(
+						'settings'    => "{$prefix}_{$template_slug}_hero_style",
+						'type'        => 'select',
+						'section'     => $section_id,
+						'label'       => __( 'Hero Banner Style' ),
+						'choices'     => array(
+							//'hero'   => 'Hero',
+							'figure' => 'Figure',
+							''       => 'None',
+						),
+					)
+				);
+	
+				$wp_customize->add_control(
+					"{$prefix}_{$template_slug}_hero_position_control",
+					array(
+						'settings'    => "{$prefix}_{$template_slug}_hero_position",
+						'type'        => 'select',
+						'section'     => $section_id,
+						'label'       => __( 'Hero Banner Position' ),
+						'choices'     => array(
+							'before'   => 'Before Title',
+							'after'    => 'After Title',
+						),
+					)
+				);
+
+			}
 
 			$wp_customize->add_control(
 				"{$prefix}_{$template_slug}_show_title_control",

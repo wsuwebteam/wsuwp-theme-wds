@@ -3,7 +3,7 @@
 <!-- GLOBAL CONTAINER:START -->
 <div class="wsu-wrapper-global">
 	<?php get_template_part( 'template-component/component-global-header', get_post_type() ); ?>
-	<?php get_template_part( 'template-parts/site-navigation-vertical', get_post_type() ); ?>
+	<?php get_template_part( 'template-component/component-site-navigation-vertical', get_post_type() ); ?>
 	<!-- SITE WRAPPER:START -->
 	<div class="wsu-wrapper-site">
 		<!-- SITE CONTAINER:START -->
