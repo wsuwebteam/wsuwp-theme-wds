@@ -6,6 +6,7 @@ class Menus {
 	public static function init() {
 
 		Theme::load_class( 'walker-nav-menu-toggle' );
+		Theme::load_class( 'walker-nav-menu-offsite' );
 
 		add_action( 'after_setup_theme', array( __CLASS__, 'register_menus' ), 0 );
 
@@ -17,6 +18,7 @@ class Menus {
 			array(
 				'site'    => 'Site Navigation',
 				'footer'  => 'Footer Menu',
+				'offsite' => 'Offsite Menu',
 			)
 		);
 
