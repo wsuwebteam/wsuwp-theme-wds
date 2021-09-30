@@ -1,6 +1,6 @@
 <?php
 
-$hero_style = WSUWP\Theme\WDS\Template::get_option( 'hero_style', get_post_type(), 'single' );
+$hero_style = apply_filters( 'wsu_wds_template_option', 'none', 'hero_style', 'single' );
 
 switch ( $hero_style ) {
 

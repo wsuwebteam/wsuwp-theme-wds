@@ -25,11 +25,11 @@ class Walker_Nav_Menu_Toggle extends \Walker_Nav_Menu {
 		$classes .= ( in_array( 'current-menu-ancestor', (array) $item->classes, true ) ) ? ' wsu-menu-item--parent' : '';
 		$classes .= ( in_array( 'current-menu-item', (array) $item->classes, true ) ) ? ' wsu-menu-item--current' : '';
 
+
+
 		$output .= '<li';
 
 		$output .= ( ! empty( $classes ) ) ? ' class="' . esc_attr( $classes ) . '"' : '';
-
-		//$output .= ' data-class="' . esc_attr( $class_names ) . '"';
 
 		$is_expanded = ( $this->is_expanded( $item ) ) ? 'true' : 'false';
 
@@ -41,47 +41,57 @@ class Walker_Nav_Menu_Toggle extends \Walker_Nav_Menu {
 
 	protected function build_link_item( &$output, $item, $depth = 0, $args = null, $id = 0) {
 
-		// Pulled from https://developer.wordpress.org/reference/classes/walker_nav_menu/ 
+		// Pulled from https://developer.wordpress.org/reference/classes/walker_nav_menu/
 
-		$atts           = array();
-		$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
-		$atts['target'] = ! empty( $item->target ) ? $item->target : '';
+		if ( '#' === $item->url && in_array( 'menu-item-has-children', (array) $item->classes, true )  ) {
 
-		if ( '_blank' === $item->target && empty( $item->xfn ) ) {
+			$button_label = ( $this->is_expanded( $item ) ) ? 'Close' : 'Open';
 
-			$atts['rel'] = 'noopener';
+			$output .= '<button class="wsu-menu--toggle" aria-label="' . $button_label  . ' submenu for ' . esc_attr( wp_strip_all_tags( $item->title ) ) . '">' . esc_html( $item->title ) . '</button>';
 
 		} else {
 
-			$atts['rel'] = $item->xfn;
+			$atts           = array();
+			$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
+			$atts['target'] = ! empty( $item->target ) ? $item->target : '';
 
-		}
+			if ( '_blank' === $item->target && empty( $item->xfn ) ) {
 
-		$atts['href']         = ! empty( $item->url ) ? $item->url : '';
-		$atts['aria-current'] = $item->current ? 'page' : '';
-		$atts['aria-role'] = ( '#' === $item->url ) ? 'button' : '';
+				$atts['rel'] = 'noopener';
 
-		$atts       = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
-		$attributes = '';
+			} else {
 
-		foreach ( $atts as $attr => $value ) {
+				$atts['rel'] = $item->xfn;
 
-			if ( is_scalar( $value ) && '' !== $value && false !== $value ) {
-
-				$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-				$attributes .= ' ' . $attr . '="' . $value . '"';
 			}
+
+			$atts['href']         = ! empty( $item->url ) ? $item->url : '';
+			$atts['aria-current'] = $item->current ? 'page' : '';
+			$atts['aria-role'] = ( '#' === $item->url ) ? 'button' : '';
+
+			$atts       = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+			$attributes = '';
+
+			foreach ( $atts as $attr => $value ) {
+
+				if ( is_scalar( $value ) && '' !== $value && false !== $value ) {
+
+					$value       = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+					$attributes .= ' ' . $attr . '="' . $value . '"';
+				}
+			}
+
+			$output .= '<a' . $attributes . '>';
+
+			$output .= esc_html( $item->title );
+
+			$output .= '</a>';
+
+			$button_label = ( $this->is_expanded( $item ) ) ? 'Close' : 'Open';
+
+			$output .= ( in_array( 'menu-item-has-children', (array) $item->classes, true ) ) ? '<button aria-label="{' . $button_label . ' submenu ' . esc_attr( wp_strip_all_tags( $item->title ) ) . '" class="wsu-menu--toggle"></button>' : '';
+
 		}
-
-		$output .= '<a' . $attributes . '>';
-
-		$output .= esc_html( $item->title );
-
-		$output .= '</a>';
-
-		$button_label = ( $this->is_expanded( $item ) ) ? 'Close' : 'Open';
-
-		$output .= ( in_array( 'menu-item-has-children', (array) $item->classes, true ) ) ? '<button aria-label="' . $button_label .' Item Menu" class="wsu-menu-toggle--toggle"></button>' : '';
 
 	}
 
