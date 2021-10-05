@@ -14,6 +14,7 @@ class Customizer {
 		require_once get_template_directory() . '/customizer/customizer_site_footer.php';
 		require_once get_template_directory() . '/customizer/customizer_site_navigation.php';
 		require_once get_template_directory() . '/customizer/customizer_template.php';
+		require_once get_template_directory() . '/customizer/customizer_advanced.php';
 
 		add_action( 'customize_register', array( __CLASS__, 'setup_customizer' ) );
 
@@ -34,6 +35,7 @@ class Customizer {
 
 		$social = new Customizer_Social( $wp_customize );
 		$contact = new Customizer_Contact( $wp_customize );
+		$advanced = new Customizer_Advanced( $wp_customize );
 
 		$panel = 'wds_theme_panel';
 
