@@ -16,6 +16,7 @@ class Template {
 			'show_categories'   => false,
 			'show_tags'         => false,
 			'show_footer'       => false,
+			'sidebar'           => 'none',
 		),
 		'page' => array(
 			'unsupported'     => array( 'hero' ),
@@ -28,6 +29,7 @@ class Template {
 			'show_categories' => false,
 			'show_tags'       => false,
 			'show_footer'     => true,
+			'sidebar'          => 'none',
 		),
 		'post' => array(
 			'hero_style'      => 'figure',
@@ -39,6 +41,7 @@ class Template {
 			'show_categories' => true,
 			'show_tags'       => true,
 			'show_footer'     => true,
+			'sidebar'         => 'sidebar_post',
 		),
 		'single' => array(
 			'hero_style'        => 'figure',
@@ -50,6 +53,27 @@ class Template {
 			'show_categories'   => true,
 			'show_tags'         => true,
 			'show_footer'       => true,
+			'sidebar'           => 'none',
+		),
+		'archive' => array(
+			'show_title'        => true,
+			'show_publish_date' => true,
+			'show_byline'       => true,
+			'show_share'        => true,
+			'show_categories'   => true,
+			'show_tags'         => true,
+			'show_footer'       => true,
+			'sidebar'           => 'none',
+		),
+		'post_archive' => array(
+			'show_title'        => true,
+			'show_publish_date' => true,
+			'show_byline'       => true,
+			'show_share'        => true,
+			'show_categories'   => true,
+			'show_tags'         => true,
+			'show_footer'       => true,
+			'sidebar'           => 'post',
 		),
 	);
 
@@ -57,6 +81,65 @@ class Template {
 	public static function init() {
 
 		add_filter( 'wsu_wds_template_option', array( __CLASS__, 'filter_template_option' ), 10, 3 );
+
+	}
+
+
+	public static function get_sidebar() {
+
+		$prefix   = 'wsu_wds_template';
+
+		$context = self::get_context();
+
+		$sidebar = self::get_option( 'sidebar', $context );
+
+		return $sidebar;
+
+	}
+
+	public static function get_context( $context = false, $context_default = false ) {
+
+		if ( ! $context ) {
+
+			if ( is_singular() ) {
+
+				return get_post_type();
+	
+			} elseif ( is_category() ) {
+	
+				return 'category';
+	
+			} elseif ( is_tag() ) {
+	
+				return 'tag';
+	
+			} elseif ( is_post_type_archive( 'post' ) ) {
+	
+				$post_type = get_post_type();
+	
+				return "{$post_type}_archive";
+	
+			} elseif ( is_archive() ) {
+	
+				return 'archive';
+	
+			} elseif ( is_search() ) {
+	
+				return 'search';
+	
+			}
+
+		} elseif ( $context && array_key_exists( $context, self::$template_defaults ) ) {
+
+			return $context;
+
+		} elseif ( $context_default && array_key_exists( $context_default, self::$template_defaults ) ) {
+
+			return $context_default;
+
+		}
+
+		return 'post_archive';
 
 	}
 
@@ -89,23 +172,24 @@ class Template {
 	}
 
 
-	public static function get_option( $option, $post_type = false, $template = false ) {
+	public static function get_option( $option, $context = false, $context_default = false, $default = false ) {
 
-		if ( ! $post_type ) {
+		$context = self::get_context( $context, $context_default );
 
-			$post_type = get_post_type();
+		if ( ! array_key_exists( $context, self::$template_defaults ) ) {
 
+			if ( $context_default ) {
+
+				$context = $context_default;
+
+			} else {
+
+				$context = ( is_singular() ) ? 'single' : 'archive';
+
+			}
 		}
 
 		$prefix = 'wsu_wds_template';
-
-		if ( is_home() || is_front_page() ) {
-
-			$template = $post_type;
-
-			$post_type = 'home';
-
-		}
 
 		if ( 'show_title' === $option && ! self::should_title() ) {
 
@@ -113,50 +197,31 @@ class Template {
 
 		}
 
-		if ( $post_type ) {
+		$context_key = "{$prefix}_{$context}_{$option}";
 
-			$post_type_key   = "{$prefix}_{$post_type}_{$option}";
-			$post_type_value = get_theme_mod( $post_type_key, '' );
+		$default_value = ( false !== $default ) ? $default : self::get_default( $option, $context );
 
-			if ( '' !== $post_type_value ) {
+		$option_value = get_theme_mod( $context_key, $default_value );
 
-				return $post_type_value;
+		return $option_value;
 
-			}
-		}
-
-		if ( $template ) {
-
-			$template_key   = "{$prefix}_{$template}_{$option}";
-			$template_value = get_theme_mod( $template_key, '' );
-
-			if ( '' !== $post_type_value ) {
-
-				return $post_type_value;
-
-			}
-		}
-
-		return ( '' !== self::get_default( $option, $post_type ) ) ? self::get_default( $option, $post_type ) : self::get_default( $option, $template );
 	}
 
 
-	public static function get_default( $option, $post_type, $template = false ) {
+	public static function get_default( $option, $context = false, $context_default = false ) {
 
-		if ( $post_type && isset( self::$template_defaults[ $post_type ][ $option ] ) ) {
+		$context = self::get_context( $context, $context_default );
 
-			return self::$template_defaults[ $post_type ][ $option ];
+		return ( isset( self::$template_defaults[ $context ][ $option ] ) ) ? self::$template_defaults[ $context ][ $option ] : '';
+
+	}
 
 
-		} elseif ( $template && isset( self::$template_defaults[ $template ][ $option ] ) ) {
+	public static function has_option( $option, $context = false, $context_default = false  ) {
 
-			return self::$template_defaults[ $template ][ $option ];
+		$context = self::get_context( $context, $context_default );
 
-		} else {
-
-			return '';
-
-		}
+		return ( isset( self::$template_defaults[ $context ][ $option ] ) ) ? true : false;
 
 	}
 
@@ -165,15 +230,25 @@ class Template {
 
 		if ( ! $post_content && is_singular() && in_the_loop() ) {
 
-			$post_content = do_blocks( get_the_content() );
+			$post_content = get_the_content();
 
 		}
 
-		if ( false !== strpos( $post_content, '<h1' ) || false !== strpos( $post_content, 'tag":"h1"' ) ) {
+		$has_title = array(
+			'<h1',
+			'tag":"h1"',
+			'wsuwp/pagetitle',
+		);
 
-			return false;
+		foreach ( $has_title as $search_string ) {
 
+			if ( false !== strpos( $post_content, $search_string  ) ) {
+
+				return false;
+	
+			}
 		}
+
 
 		return true;
 

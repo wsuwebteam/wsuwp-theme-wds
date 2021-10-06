@@ -86,51 +86,25 @@ class Sidebars {
 	}
 
 
-	public static function has() {
+	public static function get_sidebars( $format = 'select') {
 
-		$sidebar_id = self::get_sidebar_id();
+		global $wp_registered_sidebars;
 
-		return is_active_sidebar( $sidebar_id );
+		$sidebars = array();
 
-	}
+		if ( 'select' === $format ) {
 
+			foreach ( $wp_registered_sidebars as $id => $sidebar ) {
 
-	public static function get_sidebar_id() {
+				$sidebars[ $id ] = $sidebar['name'];
+			}
 
-		$context = self::get_context();
-
-		return 'sidebar_' . $context;
-
-	}
-
-
-	protected static function get_context() {
-
-		if ( is_singular() ) {
-
-			return get_post_type();
-
-		} elseif ( is_category() ) {
-
-			return 'category';
-
-		} elseif ( is_tag() ) {
-
-			return 'tag';
-
-		} elseif ( is_archive() ) {
-
-			return 'archive';
-
-		} elseif ( is_search() ) {
-
-			return 'search';
+			return $sidebars;
 
 		}
 
-		return '';
-
 	}
+
 
 }
 
