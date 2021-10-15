@@ -29,6 +29,7 @@ class Scripts {
 
 	}
 
+
 }
 
 Scripts::init();
