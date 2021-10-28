@@ -52,7 +52,10 @@ class Block_WSUWP_Post_Hero extends Block {
 		if ( empty( $attrs['imageSrc'] ) && has_post_thumbnail() ) {
 
 			$attrs['imageId']      = get_post_thumbnail_id();
-			$attrs['imageSrc']     = wp_get_attachment_image_src( $attrs['imageId'], 'full' );
+
+			$image_array = wp_get_attachment_image_src( $attrs['imageId'], 'full' );
+
+			$attrs['imageSrc']     = $image_array[0];
 			$attrs['imageSrcset']  = wp_get_attachment_image_srcset( $attrs['imageId'], 'full' );
 			$attrs['imageSizes']   = wp_get_attachment_image_sizes( $$attrs['imageId'], 'full' );
 			$attrs['imageAlt']     = get_post_meta( $attrs['imageId'], '_wp_attachment_image_alt', true);
