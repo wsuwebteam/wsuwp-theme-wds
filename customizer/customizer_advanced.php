@@ -34,6 +34,64 @@ class Customizer_Advanced {
 			)
 		);
 
+		$wp_customize->add_setting(
+			'wsu_wds[scripts][syndicate]',
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => false,
+				'type'       => 'option',
+			)
+		);
+
+		$wp_customize->add_setting(
+			'wsu_wds[scripts][jquery]',
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => false,
+				'type'       => 'option',
+			)
+		);
+
+		$wp_customize->add_setting(
+			'wsu_wds[scripts][bootstrap]',
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => false,
+				'type'       => 'option',
+			)
+		);
+
+
+		$wp_customize->add_control(
+			'wsu_wds_scripts_syndicate_control',
+			array(
+				'settings' => 'wsu_wds[scripts][syndicate]',
+				'type'     => 'checkbox',
+				'section'  => $this->section_id,
+				'label'    => __( 'Include WSU Content Syndicate CSS (People, Events, and Feed)' ),
+			)
+		);
+
+		$wp_customize->add_control(
+			'wsu_wds_scripts_jquery_control',
+			array(
+				'settings' => 'wsu_wds[scripts][jquery]',
+				'type'     => 'checkbox',
+				'section'  => $this->section_id,
+				'label'    => __( 'Include jQuery' ),
+			)
+		);
+
+		$wp_customize->add_control(
+			'wsu_wds_scripts_bootstrap_control',
+			array(
+				'settings' => 'wsu_wds[scripts][bootstrap]',
+				'type'     => 'checkbox',
+				'section'  => $this->section_id,
+				'label'    => __( 'Include Bootstrap Icons' ),
+			)
+		);
+
 		$wp_customize->add_control(
 			'wsu_wds_version_control',
 			array(
