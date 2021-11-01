@@ -4,7 +4,7 @@
 class Theme {
 
 
-	protected static $version = '1.0.2';
+	protected static $version = '1.0.3';
 
 
 	public static function get( $property ) {
@@ -30,6 +30,7 @@ class Theme {
 		require_once __DIR__ . '/sidebars.php';
 		require_once __DIR__ . '/supports.php';
 		require_once __DIR__ . '/wds_options.php';
+		require_once __DIR__ . '/rest-api.php';
 
 	}
 
