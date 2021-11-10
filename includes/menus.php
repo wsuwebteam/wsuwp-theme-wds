@@ -7,8 +7,10 @@ class Menus {
 
 		Theme::load_class( 'walker-nav-menu-toggle' );
 		Theme::load_class( 'walker-nav-menu-offsite' );
+		Theme::load_class( 'walker-nav-menu-category' );
 
 		add_action( 'after_setup_theme', array( __CLASS__, 'register_menus' ), 0 );
+
 
 	}
 

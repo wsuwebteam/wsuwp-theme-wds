@@ -47,8 +47,9 @@ class Customizer_Site_Navigation {
 				'label'       => __( 'Navigation Style' ),
 				'description' => __( 'Change navigation style.' ),
 				'choices'     => array(
-					'vertical' => 'Vertical',
-					''         => 'None',
+					'vertical'   => 'Vertical',
+					'horizontal' => 'Horizontal',
+					''           => 'None',
 				),
 			)
 		);
