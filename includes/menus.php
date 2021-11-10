@@ -11,6 +11,8 @@ class Menus {
 
 		add_action( 'after_setup_theme', array( __CLASS__, 'register_menus' ), 0 );
 
+		add_filter( 'body_class', array( __CLASS__, 'add_menu_body_classes' ) );
+
 
 	}
 
@@ -45,6 +47,18 @@ class Menus {
 		}
 
 		return $nav_menus;
+
+	}
+
+	public static function add_menu_body_classes( $classes ) {
+
+		if ( 'horizontal' === get_theme_mod('wsu_wds_site_navigation_style', false ) ) {
+
+			return array_merge( $classes, array( 'wsu-has-navigation--horizontal' ) );
+
+		}
+
+		return $classes;
 
 	}
 
