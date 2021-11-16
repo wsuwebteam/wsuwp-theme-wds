@@ -41,17 +41,19 @@ class Customizer_Template {
 
 		foreach ( $post_types as $post_type ) {
 
+			if ( ! $post_type->exclude_from_search ) {
 
-			$templates[ $post_type->name ] = array(
-				'label'         => $post_type->label,
-				'template_base' => 'single',
-			);
+				$templates[ $post_type->name ] = array(
+					'label'         => $post_type->label,
+					'template_base' => 'single',
+				);
+	
+				$templates[ $post_type->name . '_archive' ] = array(
+					'label'         => $post_type->label . ' Archive',
+					'template_base' => 'archive',
+				);
 
-			$templates[ $post_type->name . '_archive' ] = array(
-				'label'         => $post_type->label . ' Archive',
-				'template_base' => 'archive',
-			);
-
+			}
 		}
 
 		foreach ( $templates as $template_slug => $template_args ) {
