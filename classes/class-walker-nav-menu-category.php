@@ -27,7 +27,7 @@ class Walker_Nav_Menu_Category extends \Walker_Nav_Menu {
 
 	public function end_lvl( &$output, $depth = 0, $args = null ) {
 
-		if ( $depth = 1 ) { 
+		if ( $depth === 0 ) { 
 
 			$output .= '<li class="wsu-navigation-site-horizontal__menu-item-close"><button class="wsu-button-ui--close wsu-menu--submenu-close">Close</button></li>';
 
