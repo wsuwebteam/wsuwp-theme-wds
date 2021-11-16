@@ -7,8 +7,6 @@ class Template {
 	protected static $template_defaults = array(
 		'home' => array(
 			'unsupported'       => array( 'hero' ),
-			'hero_style'        => 'none',
-			'hero_position'     => 'before',
 			'show_title'        => true,
 			'show_publish_date' => false,
 			'show_byline'       => false,
@@ -20,8 +18,6 @@ class Template {
 		),
 		'page' => array(
 			'unsupported'     => array( 'hero' ),
-			'hero_style'      => 'none',
-			'hero_position'   => 'before',
 			'show_title'      => true,
 			'show_publish_date' => false,
 			'show_byline'     => false,
