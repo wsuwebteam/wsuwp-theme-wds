@@ -8,11 +8,11 @@ class Menus {
 		Theme::load_class( 'walker-nav-menu-toggle' );
 		Theme::load_class( 'walker-nav-menu-offsite' );
 		Theme::load_class( 'walker-nav-menu-category' );
+		Theme::load_class( 'walker-nav-menu-footer' );
 
 		add_action( 'after_setup_theme', array( __CLASS__, 'register_menus' ), 0 );
 
 		add_filter( 'body_class', array( __CLASS__, 'add_menu_body_classes' ) );
-
 
 	}
 
