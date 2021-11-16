@@ -21,16 +21,18 @@
             <?php echo wp_kses_post( get_theme_mod( 'wsu_wds_site_footer_caption', '' ) ); ?>
 		</div>
 		<?php endif; ?>
+		<?php if ( has_nav_menu( 'footer' ) ) : ?>
 		<?php
-			/*wp_nav_menu(
+			wp_nav_menu(
 				array(
 					'theme_location' => 'footer',
-					'menu_class'     => 'wsu-menu-utility wsu-menu-utility--horizontal wsu-menu-utility--flat',
+					'menu_class'     => 'wsu-menu-deep-links',
 					'container'      => '',
-					'walker'         => new WSUWP\Theme\WDS\Walker_Nav_Menu_Toggle(),
+					'walker'         => new WSUWP\Theme\WDS\Walker_Nav_Menu_Footer(),
 				)
-			);*/
+			);
 		?>
+		<?php endif; ?>
 		<?php get_template_part( 'template-component/component-site-contact' ); ?>
 		<?php get_template_part( 'template-component/component-site-social' ); ?>
 		<svg aria-hidden="true" tabindex="-1" role="img" aria-labelledby="wsuLogoTitle wsuLogoDesc" class="wsu-coug-head wsu-coug-head--white" enable-background="new 0 0 70.2 69.6" version="1.1" viewBox="0 0 70.2 69.6" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
