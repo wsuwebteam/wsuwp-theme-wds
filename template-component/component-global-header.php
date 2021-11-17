@@ -1,4 +1,12 @@
 <?php if ( empty( get_theme_mod('wsu_wds_global_header_hide', false ) ) ) : ?>
+<?php
+
+	$apply_link_theme = get_theme_mod( 'wsu_wds_global_header_apply_link' );
+	$give_link_theme  = get_theme_mod( 'wsu_wds_global_header_give_link' );
+	$apply_link       = ( ! empty( $apply_link_theme ) ) ? $apply_link_theme : 'https://admission.wsu.edu/apply/as/find-your-application/';
+	$give_link        = ( ! empty( $give_link_theme ) ) ? $give_link_theme : 'https://foundation.wsu.edu/';
+
+?>
 <header class="wsu-header-global <?php if ( ! empty( get_theme_mod('wsu_wds_global_header_style', false ) ) ) : ?>wsu-header-global--<?php echo esc_attr( get_theme_mod( 'wsu_wds_global_header_style', '' ) ); ?><?php endif; ?>">
 	<div class="wsu-header-global__content">
 		<a class="wsu-wordmark" href="https://wsu.edu" aria-label="Go to WSU Homepage">
@@ -32,10 +40,10 @@
 					);
 					if ( $global_menu ) : ?><?php echo wp_kses_post( $global_menu ); ?><?php else : ?>
 					<li>
-						<a href="https://foundation.wsu.edu/">Give</a>
+						<a href="<?php echo esc_url( $give_link ); ?>">Give</a>
 					</li>
 					<li>
-						<a href="https://admission.wsu.edu/apply/as/find-your-application/">Apply</a>
+						<a href="<?php echo esc_url( $apply_link ); ?>">Apply</a>
 					</li>
 					<li>
 						<a href="https://wsu.edu/about/statewide/">Locations</a>

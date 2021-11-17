@@ -38,6 +38,22 @@ class Customizer_Global_Header {
 		);
 
 		$wp_customize->add_setting(
+			"{$prefix}_apply_link",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => '',
+			)
+		);
+
+		$wp_customize->add_setting(
+			"{$prefix}_give_link",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => '',
+			)
+		);
+
+		$wp_customize->add_setting(
 			"{$prefix}_style",
 			array(
 				'capability' => 'edit_theme_options',
@@ -68,6 +84,26 @@ class Customizer_Global_Header {
 					''        => 'Default',
 					'dark'    => 'Dark',
 				),
+			)
+		);
+
+		$wp_customize->add_control( 
+			"{$prefix}_give_link_control",
+			array(
+				'label'    => 'Give Link',
+				'section'  => $this->section_id,
+				'settings' => "{$prefix}_give_link",
+				'type'     => 'text',
+			)
+		);
+
+		$wp_customize->add_control( 
+			"{$prefix}_apply_link_control",
+			array(
+				'label'    => 'Apply Link',
+				'section'  => $this->section_id,
+				'settings' => "{$prefix}_apply_link",
+				'type'     => 'text',
 			)
 		);
 
