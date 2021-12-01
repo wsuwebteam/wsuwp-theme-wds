@@ -1,4 +1,10 @@
-<?php namespace WSUWP\Theme\WDS; ?>
+<?php namespace WSUWP\Theme\WDS; 
+
+/**
+ * Page Template
+ */
+
+?>
 <?php get_header(); ?>
 <!-- GLOBAL CONTAINER:START -->
 <div class="wsu-wrapper-global">
@@ -11,19 +17,26 @@
 		<div class="wsu-wrapper-content">
 			<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
 			<?php
+			if ( have_posts() ) {
+
+				while ( have_posts() ) {
+
+					the_post();
 
 					echo '<article class="wsu-article">';
 
-					get_template_part( 'template-parts/template-header', '404' );
+					get_template_part( 'template-parts/template-header', 'page', array( 'context' => 'page' ) );
 
-					get_template_part( 'template-parts/template-content', '404' );
+					get_template_part( 'template-parts/template-content', 'page', array( 'context' => 'page' ) );
 
-					get_template_part( 'template-component/component-search-block' );
+					get_template_part( 'template-parts/template-footer', 'page', array( 'context' => 'page' ) );
 
 					echo '</article>';
 
-			?>
+				} // end while
+			}; ?>
 			</main>
+			<?php get_template_part( 'template-parts/template-sidebar', get_post_type(), array( 'context' => 'page' ) ); ?>
 		</div>
 		<?php get_template_part( 'template-component/component-site-footer', get_post_type() ); ?>
 		<!-- SITE CONTAINER:END -->

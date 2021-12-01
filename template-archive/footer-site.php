@@ -1,1 +1,0 @@
-<?php WSUWP\Theme\WDS\Template::render( 'block-templates/footer-site', get_post_type() );

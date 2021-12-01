@@ -17,15 +17,15 @@ class Template {
 			'sidebar'           => 'none',
 		),
 		'page' => array(
-			'unsupported'     => array( 'hero' ),
-			'show_title'      => true,
+			'unsupported'       => array( 'hero' ),
+			'show_title'        => true,
 			'show_publish_date' => false,
-			'show_byline'     => false,
-			'show_share'     => true,
-			'show_categories' => false,
-			'show_tags'       => false,
-			'show_footer'     => true,
-			'sidebar'          => 'none',
+			'show_byline'       => false,
+			'show_share'        => false,
+			'show_categories'   => false,
+			'show_tags'         => false,
+			'show_footer'       => true,
+			'sidebar'           => 'none',
 		),
 		'post' => array(
 			'hero_style'      => 'figure',
@@ -40,14 +40,12 @@ class Template {
 			'sidebar'         => 'sidebar_post',
 		),
 		'single' => array(
-			'hero_style'        => 'figure',
-			'hero_position'     => 'before',
 			'show_title'        => true,
-			'show_publish_date' => true,
-			'show_byline'       => true,
-			'show_share'        => true,
-			'show_categories'   => true,
-			'show_tags'         => true,
+			'show_publish_date' => false,
+			'show_byline'       => false,
+			'show_share'        => false,
+			'show_categories'   => false,
+			'show_tags'         => false,
 			'show_footer'       => true,
 			'sidebar'           => 'none',
 		),
@@ -81,11 +79,11 @@ class Template {
 	}
 
 
-	public static function get_sidebar() {
+	public static function get_sidebar( $context = false ) {
 
 		$prefix   = 'wsu_wds_template';
 
-		$context = self::get_context();
+		$context = self::get_context( $context );
 
 		$sidebar = self::get_option( 'sidebar', $context );
 

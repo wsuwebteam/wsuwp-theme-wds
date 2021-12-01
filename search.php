@@ -17,3 +17,53 @@
 </div>
 <!-- GLOBAL CONTAINER:END -->
 <?php get_footer(); ?>
+
+
+<?php namespace WSUWP\Theme\WDS; 
+
+/**
+ * Page Template
+ */
+
+?>
+<?php get_header(); ?>
+<!-- GLOBAL CONTAINER:START -->
+<div class="wsu-wrapper-global">
+	<?php get_template_part( 'template-component/component-global-header', 'search' ); ?>
+	<?php get_template_part( 'template-component/component-site-navigation-vertical', 'search' ); ?>
+	<!-- SITE WRAPPER:START -->
+	<div class="wsu-wrapper-site">
+		<!-- SITE CONTAINER:START -->
+		<?php get_template_part( 'template-component/component-site-header', 'search' ); ?>
+		<div class="wsu-wrapper-content">
+			<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
+			<?php
+			if ( have_posts() ) {
+
+				while ( have_posts() ) {
+
+					the_post();
+
+					echo '<article class="wsu-article">';
+
+					get_template_part( 'template-parts/template-header', 'search', array( 'context' => 'search' ) );
+
+					get_template_part( 'template-parts/template-content', 'search', array( 'context' => 'search' ) );
+
+					get_template_part( 'template-parts/template-footer', 'search', array( 'context' => 'search' ) );
+
+					echo '</article>';
+
+				} // end while
+			}; ?>
+			</main>
+			<?php get_template_part( 'template-parts/template-sidebar', 'search', array( 'context' => 'search' ) ); ?>
+		</div>
+		<?php get_template_part( 'template-component/component-site-footer', 'search' ); ?>
+		<!-- SITE CONTAINER:END -->
+	</div>
+	<!-- SITE WRAPPER:END -->
+	<?php get_template_part( 'template-component/component-global-footer', 'search' ); ?>
+</div>
+<!-- GLOBAL CONTAINER:END -->
+<?php get_footer(); ?>
