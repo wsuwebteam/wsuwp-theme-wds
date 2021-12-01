@@ -8,7 +8,42 @@
 	<div class="wsu-wrapper-site">
 		<!-- SITE CONTAINER:START -->
 		<?php get_template_part( 'template-component/component-site-header', get_post_type() ); ?>
-		<?php get_template_part( 'template-parts/template-single', get_post_type() ); ?>
+		<div class="wsu-wrapper-content">
+			<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
+			<?php
+			if ( have_posts() ) {
+
+				while ( have_posts() ) {
+
+					the_post();
+
+					echo '<article class="wsu-article">';
+
+					if ( 'before' === apply_filters( 'wsu_wds_template_option', '', 'hero_position', get_post_type() ) ) {
+
+						get_template_part( 'template-parts/template-hero', get_post_type(), array( 'context' => get_post_type() ) );
+
+					}
+
+					get_template_part( 'template-parts/template-header', get_post_type(), array( 'context' => get_post_type() ) );
+
+					if ( 'after' === apply_filters( 'wsu_wds_template_option', '', 'hero_position', get_post_type() ) ) {
+
+						get_template_part( 'template-parts/template-hero', get_post_type(), array( 'context' => get_post_type() ) );
+
+					}
+
+					get_template_part( 'template-parts/template-content', get_post_type(), array( 'context' => get_post_type() ) );
+
+					get_template_part( 'template-parts/template-footer', get_post_type(), array( 'context' => get_post_type() ) );
+
+					echo '</article>';
+
+				} // end while
+			} ; ?>
+			</main>
+			<?php get_template_part( 'template-parts/template-sidebar', get_post_type(), array( 'context' => get_post_type() ) ); ?>
+		</div>
 		<?php get_template_part( 'template-component/component-site-footer', get_post_type() ); ?>
 		<!-- SITE CONTAINER:END -->
 	</div>
