@@ -4,7 +4,7 @@
 class Theme {
 
 
-	protected static $version = '1.0.6';
+	protected static $version = '1.1.0';
 
 
 	public static function get( $property ) {
