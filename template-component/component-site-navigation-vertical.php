@@ -1,5 +1,5 @@
 <?php if ( 'vertical' === get_theme_mod( 'wsu_wds_site_navigation_style', 'vertical' ) ) : ?>
-<nav class="wsu-navigation-site-vertical" aria-expanded="true" aria-haspopup="true" aria-label="Site menu">
+<nav class="wsu-navigation-site-vertical<?php if ( get_theme_mod( 'wsu_wds_site_navigation_color', false ) ) : ?> wsu-navigation-site-vertical--color-dark<?php endif; ?>" aria-expanded="true" aria-haspopup="true" aria-label="Site menu">
 	<button class="wsu-navigation-site-vertical__overlay wsu-navigation-site-vertical--close" aria-label="Close site menu"></button>
 	<button class="wsu-navigation-site-vertical__toggle-button wsu-navigation-site-vertical--toggle" aria-label="Open site menu">Menu</button>
 	<button class="wsu-navigation-site-vertical__open-button wsu-navigation-site-vertical--open" aria-label="Open site menu">Menu</button>

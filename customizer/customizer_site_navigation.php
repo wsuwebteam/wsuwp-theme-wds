@@ -38,6 +38,14 @@ class Customizer_Site_Navigation {
 			)
 		);
 
+		$wp_customize->add_setting(
+			"{$prefix}_color",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => '',
+			)
+		);
+
 		$wp_customize->add_control(
 			"{$prefix}_style_control",
 			array(
@@ -50,6 +58,21 @@ class Customizer_Site_Navigation {
 					'vertical'   => 'Vertical',
 					'horizontal' => 'Horizontal',
 					''           => 'None',
+				),
+			)
+		);
+
+		$wp_customize->add_control(
+			"{$prefix}_color_control",
+			array(
+				'settings'    => "{$prefix}_color",
+				'type'        => 'select',
+				'section'     => $this->section_id,
+				'label'       => __( 'Navigation Color' ),
+				'description' => __( 'Change navigation color.' ),
+				'choices'     => array(
+					'horizontal' => 'Dark',
+					''           => 'Default',
 				),
 			)
 		);
