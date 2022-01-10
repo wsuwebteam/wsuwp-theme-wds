@@ -25,7 +25,19 @@
 
 					echo '<article class="wsu-article">';
 
+					if ( 'before' === apply_filters( 'wsu_wds_template_option', '', 'hero_position', get_post_type() ) ) {
+
+						get_template_part( 'template-parts/template-hero', get_post_type(), array( 'context' => get_post_type() ) );
+
+					}
+
 					get_template_part( 'template-parts/template-header', 'post', array( 'context' => 'post' ) );
+
+					if ( 'after' === apply_filters( 'wsu_wds_template_option', '', 'hero_position', get_post_type() ) ) {
+
+						get_template_part( 'template-parts/template-hero', get_post_type(), array( 'context' => get_post_type() ) );
+
+					}
 
 					get_template_part( 'template-parts/template-content', 'post', array( 'context' => 'post' ) );
 
