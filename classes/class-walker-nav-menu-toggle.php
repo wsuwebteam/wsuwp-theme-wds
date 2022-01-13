@@ -22,7 +22,9 @@ class Walker_Nav_Menu_Toggle extends \Walker_Nav_Menu {
 
 		$classes = 'wsu-navigation-item';
 
-		$classes .= ( in_array( 'current-menu-ancestor', (array) $item->classes, true ) ) ? ' wsu-menu-item--parent' : '';
+		$parent_classes = array( 'current-menu-ancestor', 'current-page-ancestor' );
+
+		$classes .= ( array_intersect( $parent_classes, (array) $item->classes ) ) ? ' wsu-menu-item--parent' : '';
 		$classes .= ( in_array( 'current-menu-item', (array) $item->classes, true ) ) ? ' wsu-menu-item--current' : '';
 
 
@@ -98,7 +100,9 @@ class Walker_Nav_Menu_Toggle extends \Walker_Nav_Menu {
 
 	protected function is_expanded( $item ) {
 
-		return ( in_array( 'current-menu-item', (array) $item->classes, true ) || in_array( 'current-menu-ancestor', (array) $item->classes, true ) );
+		$expand_classes = array( 'current-menu-item', 'current-menu-ancestor', 'current-page-ancestor' );
+
+		return ( array_intersect( $expand_classes, (array) $item->classes ) ) ? true : false;
 
 	}
 
