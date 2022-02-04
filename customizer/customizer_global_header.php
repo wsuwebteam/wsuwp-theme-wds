@@ -61,16 +61,20 @@ class Customizer_Global_Header {
 			)
 		);
 
-		$wp_customize->add_control(
-			"{$prefix}_hide_control",
-			array(
-				'settings'    => "{$prefix}_hide",
-				'type'        => 'checkbox',
-				'section'     => $this->section_id,
-				'label'       => __( 'Hide Global Header' ),
-				'description' => __( 'Hide global header' ),
-			)
-		);
+		if ( Customizer::is_authorized_user() ) {
+
+			$wp_customize->add_control(
+				"{$prefix}_hide_control",
+				array(
+					'settings'    => "{$prefix}_hide",
+					'type'        => 'checkbox',
+					'section'     => $this->section_id,
+					'label'       => __( 'Hide Global Header' ),
+					'description' => __( 'Hide global header' ),
+				)
+			);
+
+		}
 
 		$wp_customize->add_control(
 			"{$prefix}_style_control",

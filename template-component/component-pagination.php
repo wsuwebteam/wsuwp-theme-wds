@@ -1,4 +1,4 @@
-<div class="wsu-pagination">
-	<div class="wsu-pagination__left"><?php previous_posts_link( 'Previous' ); ?></div>
-	<div class="wsu-pagination__right"><?php next_posts_link( 'Next' ); ?></div>
-</div>
+<nav class="wsu-pagination" role="navigation" aria-label="Pagination Navigation">
+	<?php previous_posts_link( 'Previous' ); ?>
+	<?php next_posts_link( 'Next' ); ?>
+</nav>

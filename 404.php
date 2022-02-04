@@ -1,35 +1,42 @@
-<?php namespace WSUWP\Theme\WDS; ?>
+<?php namespace WSUWP\Theme\WDS; 
+
+?>
 <?php get_header(); ?>
-<!-- GLOBAL CONTAINER:START -->
-<div class="wsu-wrapper-global">
-	<?php get_template_part( 'template-component/component-global-header', get_post_type() ); ?>
-	<?php get_template_part( 'template-component/component-site-navigation-vertical', get_post_type() ); ?>
-	<!-- SITE WRAPPER:START -->
-	<div class="wsu-wrapper-site">
-		<!-- SITE CONTAINER:START -->
-		<?php get_template_part( 'template-component/component-site-header', get_post_type() ); ?>
-		<div class="wsu-wrapper-content">
-			<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
-			<?php
-
-					echo '<article class="wsu-article">';
-
-					get_template_part( 'template-parts/template-header', '404' );
-
-					get_template_part( 'template-parts/template-content', '404' );
-
-					get_template_part( 'template-component/component-search-block' );
-
-					echo '</article>';
-
-			?>
-			</main>
-		</div>
-		<?php get_template_part( 'template-component/component-site-footer', get_post_type() ); ?>
-		<!-- SITE CONTAINER:END -->
+<?php get_template_part( 'template-component/component-global-header', '404' ); ?>
+<?php get_template_part( 'template-component/component-site-navigation-vertical', '404' ); ?>
+<!-- SITE WRAPPER:START -->
+<div class="wsu-wrapper-site">
+	<!-- SITE CONTAINER:START -->
+	<?php get_template_part( 'template-component/component-site-header', '404' ); ?>
+	<div class="wsu-wrapper-content">
+		<?php do_action('wsu_wds_theme_before_main', '404'); ?>
+		<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
+			<?php do_action('wsu_wds_theme_main', '404'); ?>
+			<?php if ( get_theme_mod( 'wsu_wds_template_search_show_breadcrumbs', true ) ) : ?><?php get_template_part( 'template-component/component-breadcrumb', '404' ); ?><?php endif; ?>
+			<?php do_action('wsu_wds_theme_after_breadcrumbs', '404'); ?>
+			<header class="wsu-page-header">
+				<h1  class="wsu-page-header__title">Page Not Found</h1>
+			</header>
+			<?php do_action('wsu_wds_theme_after_header', '404'); ?>
+			<p>
+				We're sorry, but the page you are looking for could not be found. 
+				Please try our site search or one of the links below.
+			</p>
+			<ul>
+				<li><a href="https://index.wsu.edu">The A-Z Directory</a> (an alphabetical list of departments, programs, resources, organizations, and more)</li>
+				<li><a href="https://wsu.edu/academics/">Academic Departments</a> (a list of links to all academic departments)</li>
+				<li><a href="https://wsu.edu/about/services/">Administrative Offices and Resources</a> (a list of links to all administrative offices and resources)</li>
+				<li><a href="https://wsu.edu/admission/">Admissions and Aid</a> (information for prospective students about applying, tuition, financial aid, and more)</li>
+				<li><a href="https://wsu.edu/contact/">Contact Us</a> (phone and email contacts)</li>
+			</ul>
+			<?php do_action('wsu_wds_theme_after_content', '404'); ?>
+		</main>
+		<?php do_action('wsu_wds_theme_after_main', '404'); ?>
 	</div>
-	<!-- SITE WRAPPER:END -->
-	<?php get_template_part( 'template-component/component-global-footer', get_post_type() ); ?>
+	<?php do_action('wsu_wds_theme_before_footer', '404'); ?>
+	<?php get_template_part( 'template-component/component-site-footer', '404' ); ?>
+	<!-- SITE CONTAINER:END -->
 </div>
-<!-- GLOBAL CONTAINER:END -->
+<!-- SITE WRAPPER:END -->
+<?php get_template_part( 'template-component/component-global-footer', '404' ); ?>
 <?php get_footer(); ?>

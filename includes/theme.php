@@ -6,12 +6,20 @@ class Theme {
 
 	protected static $version = '1.2.0';
 
+	protected static $authorized = array(
+		'danial.bleile@wsu.edu',
+		'dan.white1@wsu.edu',
+		'lesa.mckpeak@wsu.edu',
+	);
+
 
 	public static function get( $property ) {
 
 		switch ( $property ) {
 			case 'version':
 				return self::$version;
+			case 'authorized':
+				return self::$authorized;
 			default:
 				return '';
 		}
