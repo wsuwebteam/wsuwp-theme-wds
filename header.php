@@ -11,9 +11,10 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="https://repo.wsu.edu/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://repo.wsu.edu/favicon/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="https://repo.wsu.edu/favicon/favicon-16x16.png">
-	<link rel="manifest" href="https://repo.wsu.edu/favicon/site.webmanifest">
 
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<?php wp_body_open();?>
+	<?php wp_body_open();?>
+	<!-- GLOBAL CONTAINER:START -->
+	<div class="wsu-wrapper-global">

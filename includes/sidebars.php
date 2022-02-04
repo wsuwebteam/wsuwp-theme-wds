@@ -37,7 +37,7 @@ class Sidebars {
 
 		register_sidebar(
 			array(
-				'name'          => 'Catebory Sidebar',
+				'name'          => 'Category Sidebar',
 				'id'            => 'sidebar_category',
 				'description'   => 'Widgets in this area will be shown on all category list pages.',
 				'before_widget' => '',
