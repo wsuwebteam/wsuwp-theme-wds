@@ -4,7 +4,7 @@
 class Theme {
 
 
-	protected static $version = '1.2.0';
+	protected static $version = '1.3.0';
 
 
 	public static function get( $property ) {
@@ -12,6 +12,8 @@ class Theme {
 		switch ( $property ) {
 			case 'version':
 				return self::$version;
+			case 'authorized':
+				return self::$authorized;
 			default:
 				return '';
 		}

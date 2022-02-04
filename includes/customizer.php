@@ -3,6 +3,23 @@
 
 class Customizer {
 
+	protected static $authorized = array(
+		'danial.bleile@wsu.edu',
+		'dan.white1@wsu.edu',
+		'lesa.mckpeak@wsu.edu',
+	);
+
+	public static function get( $property ) {
+
+		switch ( $property ) {
+			case 'authorized':
+				return self::$authorized;
+			default:
+				return '';
+		}
+
+	}
+
 
 	public static function init() {
 
@@ -13,10 +30,32 @@ class Customizer {
 		require_once get_template_directory() . '/customizer/customizer_site_header.php';
 		require_once get_template_directory() . '/customizer/customizer_site_footer.php';
 		require_once get_template_directory() . '/customizer/customizer_site_navigation.php';
-		require_once get_template_directory() . '/customizer/customizer_template.php';
 		require_once get_template_directory() . '/customizer/customizer_advanced.php';
+		require_once get_template_directory() . '/customizer/customizer_template_home.php';
+		require_once get_template_directory() . '/customizer/customizer_template_page.php';
+		require_once get_template_directory() . '/customizer/customizer_template_post.php';
+		require_once get_template_directory() . '/customizer/customizer_template_archive.php';
+		require_once get_template_directory() . '/customizer/customizer_template_category.php';
+		require_once get_template_directory() . '/customizer/customizer_template_tag.php';
 
 		add_action( 'customize_register', array( __CLASS__, 'setup_customizer' ) );
+
+	}
+
+
+	public static function is_authorized_user() {
+
+		$current_user = wp_get_current_user();
+
+		if ( in_array( $current_user->user_email, self::$authorized ) ) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
 
 	}
 
@@ -42,7 +81,7 @@ class Customizer {
 		$wp_customize->add_panel(
 			$panel,
 			array(
-				'title' => __( 'WDS Theme Options' ),
+				'title' => __( 'WDS Theme Settings' ),
 				'description' => 'Settings for WSU Web Design System Theme', // Include html tags such as <p>.
 				'priority' => 160, // Mixed with top-level-section hierarchy.
 			)
@@ -65,13 +104,18 @@ class Customizer {
 		$wp_customize->add_panel(
 			$panel,
 			array(
-				'title' => __( 'WDS Template Options' ),
+				'title' => __( 'WDS Templates' ),
 				'description' => 'Settings for WSU Web Design System Theme', // Include html tags such as <p>.
 				'priority' => 160, // Mixed with top-level-section hierarchy.
 			)
 		);
 
-		$customizers[] = new Customizer_Template( $wp_customize, $panel );
+		$customizers[] = new Customizer_Template_Home( $wp_customize, $panel );
+		$customizers[] = new Customizer_Template_Page( $wp_customize, $panel );
+		$customizers[] = new Customizer_Template_Post( $wp_customize, $panel );
+		$customizers[] = new Customizer_Template_Archive( $wp_customize, $panel );
+		$customizers[] = new Customizer_Template_Category( $wp_customize, $panel );
+		$customizers[] = new Customizer_Template_Tag( $wp_customize, $panel );
 
 	}
 

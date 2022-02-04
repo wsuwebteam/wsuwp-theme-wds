@@ -4,218 +4,66 @@
 class Template {
 
 
-	protected static $template_defaults = array(
-		'home' => array(
-			'unsupported'       => array( 'hero' ),
-			'show_title'        => true,
-			'show_publish_date' => false,
-			'show_byline'       => false,
-			'show_share'        => false,
-			'show_categories'   => false,
-			'show_tags'         => false,
-			'show_footer'       => false,
-			'sidebar'           => 'none',
-		),
-		'page' => array(
-			'unsupported'       => array( 'hero' ),
-			'show_title'        => true,
-			'show_publish_date' => false,
-			'show_byline'       => false,
-			'show_share'        => false,
-			'show_categories'   => false,
-			'show_tags'         => false,
-			'show_footer'       => true,
-			'sidebar'           => 'none',
-		),
-		'post' => array(
-			'hero_style'      => 'figure',
-			'hero_position'   => 'before',
-			'show_title'      => true,
-			'show_publish_date' => true,
-			'show_byline'     => true,
-			'show_share'      => true,
-			'show_categories' => true,
-			'show_tags'       => true,
-			'show_footer'     => true,
-			'sidebar'         => 'sidebar_post',
-		),
-		'single' => array(
-			'show_title'        => true,
-			'show_publish_date' => false,
-			'show_byline'       => false,
-			'show_share'        => false,
-			'show_categories'   => false,
-			'show_tags'         => false,
-			'show_footer'       => true,
-			'sidebar'           => 'none',
-		),
-		'archive' => array(
-			'show_title'        => true,
-			'show_publish_date' => true,
-			'show_byline'       => true,
-			'show_share'        => true,
-			'show_categories'   => true,
-			'show_tags'         => true,
-			'show_footer'       => true,
-			'sidebar'           => 'none',
-		),
-		'post_archive' => array(
-			'show_title'        => true,
-			'show_publish_date' => true,
-			'show_byline'       => true,
-			'show_share'        => true,
-			'show_categories'   => true,
-			'show_tags'         => true,
-			'show_footer'       => true,
-			'sidebar'           => 'post',
-		),
-	);
-
-
 	public static function init() {
 
-		add_filter( 'wsu_wds_template_option', array( __CLASS__, 'filter_template_option' ), 10, 3 );
+		add_filter( 'theme_mod_wsu_wds_template_page_show_title', array( __CLASS__, 'show_title' ) );
+		add_filter( 'theme_mod_wsu_wds_template_page_show_breadcrumbs', array( __CLASS__, 'show_title' ) );
+
+		self::add_pagination_filters();
 
 	}
 
 
-	public static function get_sidebar( $context = false ) {
+	public static function add_pagination_filters() {
 
-		$prefix   = 'wsu_wds_template';
-
-		$context = self::get_context( $context );
-
-		$sidebar = self::get_option( 'sidebar', $context );
-
-		return $sidebar;
-
-	}
-
-	public static function get_context( $context = false, $context_default = false ) {
-
-		if ( ! $context ) {
-
-			if ( is_singular() ) {
-
-				return get_post_type();
-	
-			} elseif ( is_category() ) {
-	
-				return 'category';
-	
-			} elseif ( is_tag() ) {
-	
-				return 'tag';
-	
-			} elseif ( is_post_type_archive( 'post' ) ) {
-	
-				$post_type = get_post_type();
-	
-				return "{$post_type}_archive";
-	
-			} elseif ( is_archive() ) {
-	
-				return 'archive';
-	
-			} elseif ( is_search() ) {
-	
-				return 'search';
-	
+		add_filter(
+			'previous_posts_link_attributes',
+			function() {
+				return 'class="wsu-pagination__previous wsu-button wsu-button--style-outline" aria-label="Go to Previous Page"';
 			}
-
-		} elseif ( $context && array_key_exists( $context, self::$template_defaults ) ) {
-
-			return $context;
-
-		} elseif ( $context_default && array_key_exists( $context_default, self::$template_defaults ) ) {
-
-			return $context_default;
-
-		}
-
-		return 'post_archive';
+		);
+		add_filter(
+			'next_posts_link_attributes',
+			function() {
+				return 'class="wsu-pagination__next wsu-button wsu-button--style-outline"  aria-label="Go to Next Page"';
+			}
+		);
 
 	}
 
 
-	public static function filter_template_option( $option_value, $option, $template ) {
+	public static function show_title( $show_title ) {
 
-		if ( '' === self::get_default( $option, false, $template ) ) {
+		if ( is_singular() && in_the_loop() ) {
 
-			return $option_value;
+			$post_content = get_the_content();
 
-		} else {
+			$has_title = array(
+				'<h1',
+				'tag":"h1"',
+				'wsuwp/pagetitle',
+			);
 
-			return self::get_option( $option, false, $template );
+			foreach ( $has_title as $search_string ) {
 
-		}
+				if ( false !== strpos( $post_content, $search_string  ) ) {
 
-	}
+					return false;
 
-
-	public static function render( $slug, $name = '', $args = array() ) {
-
-		ob_start();
-
-		get_template_part( $slug, $name, $args );
-
-		$html = ob_get_clean();
-
-		echo do_blocks( $html );
-
-	}
-
-
-	public static function get_option( $option, $context = false, $context_default = false, $default = false ) {
-
-		$context = self::get_context( $context, $context_default );
-
-		if ( ! array_key_exists( $context, self::$template_defaults ) ) {
-
-			if ( $context_default ) {
-
-				$context = $context_default;
-
-			} else {
-
-				$context = ( is_singular() ) ? 'single' : 'archive';
-
+				}
 			}
 		}
 
-		$prefix = 'wsu_wds_template';
-
-		if ( 'show_title' === $option && ! self::should_title() ) {
-
-			return false;
-
-		}
-
-		$context_key = "{$prefix}_{$context}_{$option}";
-
-		$default_value = ( false !== $default ) ? $default : self::get_default( $option, $context );
-
-		$option_value = get_theme_mod( $context_key, $default_value );
-
-		return $option_value;
+		return $show_title;
 
 	}
 
 
-	public static function get_default( $option, $context = false, $context_default = false ) {
+	public static function get_sidebar( $customizer_key, $default_value ) {
 
-		$context = self::get_context( $context, $context_default );
+		$sidebar = get_theme_mod( $customizer_key, $default_value );
 
-		return ( isset( self::$template_defaults[ $context ][ $option ] ) ) ? self::$template_defaults[ $context ][ $option ] : '';
-
-	}
-
-
-	public static function has_option( $option, $context = false, $context_default = false  ) {
-
-		$context = self::get_context( $context, $context_default );
-
-		return ( isset( self::$template_defaults[ $context ][ $option ] ) ) ? true : false;
+		return ( $sidebar && is_active_sidebar( $sidebar ) ) ? $sidebar : false;
 
 	}
 
@@ -239,7 +87,7 @@ class Template {
 			if ( false !== strpos( $post_content, $search_string  ) ) {
 
 				return false;
-	
+
 			}
 		}
 

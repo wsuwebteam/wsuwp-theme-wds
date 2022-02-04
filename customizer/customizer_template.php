@@ -9,12 +9,12 @@ class Customizer_Template {
 
 	public function __construct( $wp_customize, $panel = false ) {
 
-		$this->add_customizer( $wp_customize, $panel );
+		//$this->add_customizer( $wp_customize, $panel );
 
 	}
 
 
-	protected function add_customizer( $wp_customize, $panel = false ) {
+	/*protected function add_customizer( $wp_customize, $panel = false ) {
 
 		$prefix   = 'wsu_wds_template';
 
@@ -301,7 +301,7 @@ class Customizer_Template {
 
 		}
 
-		/*$wp_customize->add_setting(
+		$wp_customize->add_setting(
 			"{$prefix}_style",
 			array(
 				'capability' => 'edit_theme_options',
@@ -322,8 +322,8 @@ class Customizer_Template {
 					''         => 'None',
 				),
 			)
-		);*/
+		);
 
-	}
+	}*/
 
 }

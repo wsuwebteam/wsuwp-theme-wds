@@ -29,13 +29,17 @@ class Customizer_Global_Footer {
 			)
 		);
 
-		$wp_customize->add_setting(
-			"{$prefix}_hide",
-			array(
-				'capability' => 'edit_theme_options',
-				'default'    => '',
-			)
-		);
+		if ( Customizer::is_authorized_user() ) {
+
+			$wp_customize->add_setting(
+				"{$prefix}_hide",
+				array(
+					'capability' => 'edit_theme_options',
+					'default'    => '',
+				)
+			);
+
+		}
 
 		$wp_customize->add_setting(
 			"{$prefix}_style",
