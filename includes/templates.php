@@ -6,8 +6,7 @@ class Template {
 
 	public static function init() {
 
-		add_filter( 'theme_mod_wsu_wds_template_page_show_title', array( __CLASS__, 'show_title' ) );
-		add_filter( 'theme_mod_wsu_wds_template_page_show_breadcrumbs', array( __CLASS__, 'show_title' ) );
+		add_filter( 'wsu_wds_template_show_title', array( __CLASS__, 'show_title' ) );
 
 		self::add_pagination_filters();
 

@@ -23,7 +23,7 @@ class Customizer_Template_Post {
 		$wp_customize->add_section(
 			$this->section_id,
 			array(
-				'title'       => 'Single Post Template',
+				'title'       => 'Post Template',
 				'description' => '',
 				'capability'  => 'edit_theme_options',
 				'panel'       => $panel,

@@ -4,7 +4,7 @@
 * and and individual page. Therefore we need to check our context
 */
 $context = ( is_front_page() ) ? 'home' : 'page';
-
+$show_breadcrumbs = ( 'home' === $context ) ? false : true;
 ?>
 <?php get_header(); ?>
 <?php get_template_part( 'template-component/component-global-header', $context ); ?>
@@ -19,10 +19,12 @@ $context = ( is_front_page() ) ? 'home' : 'page';
 			<?php do_action('wsu_wds_theme_main', $context); ?>
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-				<?php if ( get_theme_mod( 'wsu_wds_template_' . $context . '_show_breadcrumbs', true ) ) : ?><?php get_template_part( 'template-component/component-breadcrumb', $context ); ?><?php endif; ?>
+				<?php if ( get_theme_mod( 'wsu_wds_template_' . $context . '_show_breadcrumbs', $show_breadcrumbs ) && apply_filters( 'wsu_wds_template_show_title', true ) ) : ?>
+					<?php get_template_part( 'template-component/component-breadcrumb', $context ); ?>
+				<?php endif; ?>
 				<?php do_action('wsu_wds_theme_after_breadcrumbs', $context); ?>
 				<article class="wsu-article">
-					<?php if ( get_theme_mod( 'wsu_wds_template_' . $context . '_show_title', true ) ) : ?>
+					<?php if ( get_theme_mod( 'wsu_wds_template_' . $context . '_show_title', true ) && apply_filters( 'wsu_wds_template_show_title', true ) ) : ?>
 						<header class="wsu-article-header">
 							<h1  class="wsu-article-header__title"><?php the_title(); ?></h1>
 							<?php if ( get_theme_mod( 'wsu_wds_template_' . $context . '_show_publish_date', false ) ) : ?><?php get_template_part( 'template-component/component-post-published-date', $context ); ?><?php endif; ?>

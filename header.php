@@ -15,6 +15,8 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+	<a class="wsu-skip-to-main" href="#wsu-site-menu">Skip to menu</a>
+	<a class="wsu-skip-to-main" href="#wsu-content">Skip to content</a>
 	<?php wp_body_open();?>
 	<!-- GLOBAL CONTAINER:START -->
 	<div class="wsu-wrapper-global">

@@ -1,9 +1,9 @@
 <?php namespace WSUWP\Theme\WDS;
 
 
-class Customizer_Template_Page {
+class Customizer_Template_Single {
 
-	protected $section_id = 'wsu_wds_template_page';
+	protected $section_id = 'wsu_wds_template_single';
 	protected $desc = 'Edit Homepage Section';
 
 	public function __construct( $wp_customize, $panel = false ) {
@@ -20,7 +20,7 @@ class Customizer_Template_Page {
 		$wp_customize->add_section(
 			$this->section_id,
 			array(
-				'title'       => 'Page Template',
+				'title'       => 'Custom Post Type Template',
 				'description' => '',
 				'capability'  => 'edit_theme_options',
 				'panel'       => $panel,
@@ -29,7 +29,7 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_page_show_breadcrumbs",
+			"{$prefix}_single_show_breadcrumbs",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => true,
@@ -37,7 +37,7 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_page_show_title",
+			"{$prefix}_single_show_title",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => true,
@@ -45,7 +45,7 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_page_show_publish_date",
+			"{$prefix}_single_show_publish_date",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => false,
@@ -53,7 +53,7 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_page_show_share",
+			"{$prefix}_single_show_share",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => false,
@@ -61,7 +61,7 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_page_show_byline",
+			"{$prefix}_single_show_byline",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => false,
@@ -69,7 +69,7 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_page_show_categories",
+			"{$prefix}_single_show_categories",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => false,
@@ -77,7 +77,7 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_page_show_tags",
+			"{$prefix}_single_show_tags",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => false,
@@ -85,9 +85,9 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_control(
-			"{$prefix}_page_show_breadcrumbs_control",
+			"{$prefix}_single_show_breadcrumbs_control",
 			array(
-				'settings'    => "{$prefix}_page_show_breadcrumbs",
+				'settings'    => "{$prefix}_single_show_breadcrumbs",
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Breadcrumbs',
@@ -95,9 +95,9 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_control(
-			"{$prefix}_page_show_title_control",
+			"{$prefix}_single_show_title_control",
 			array(
-				'settings'    => "{$prefix}_page_show_title",
+				'settings'    => "{$prefix}_single_show_title",
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Title',
@@ -105,9 +105,9 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_control(
-			"{$prefix}_page_show_publish_date_control",
+			"{$prefix}_single_show_publish_date_control",
 			array(
-				'settings'    => "{$prefix}_page_show_publish_date",
+				'settings'    => "{$prefix}_single_show_publish_date",
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Publish Date',
@@ -115,9 +115,9 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_control(
-			"{$prefix}_page_show_share_control",
+			"{$prefix}_single_show_share_control",
 			array(
-				'settings'    => "{$prefix}_page_show_share",
+				'settings'    => "{$prefix}_single_show_share",
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Social Share',
@@ -125,9 +125,9 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_control(
-			"{$prefix}_page_show_byline",
+			"{$prefix}_single_show_byline",
 			array(
-				'settings'    => "{$prefix}_page_show_byline",
+				'settings'    => "{$prefix}_single_show_byline",
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Author',
@@ -135,9 +135,9 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_control(
-			"{$prefix}_page_show_categories",
+			"{$prefix}_single_show_categories",
 			array(
-				'settings'    => "{$prefix}_page_show_categories",
+				'settings'    => "{$prefix}_single_show_categories",
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Categories',
@@ -145,9 +145,9 @@ class Customizer_Template_Page {
 		);
 
 		$wp_customize->add_control(
-			"{$prefix}_page_show_tags",
+			"{$prefix}_single_show_tags",
 			array(
-				'settings'    => "{$prefix}_page_show_tags",
+				'settings'    => "{$prefix}_single_show_tags",
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Tags',
