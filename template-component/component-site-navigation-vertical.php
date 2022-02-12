@@ -12,6 +12,7 @@
 					'menu_class'     => 'wsu-menu wsu-menu--primary-vertical',
 					'container'      => '',
 					'walker'         => new WSUWP\Theme\WDS\Walker_Nav_Menu_Toggle(),
+					'menu_id'        => 'wsu-site-menu',
 				)
 			);
 			?>
