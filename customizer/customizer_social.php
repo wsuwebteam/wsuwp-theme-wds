@@ -53,6 +53,15 @@ class Customizer_Social {
 		);
 
 		$wp_customize->add_setting(
+			'wsu_wds[social][youtube]',
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => '',
+				'type'       => 'option',
+			)
+		);
+
+		$wp_customize->add_setting(
 			'wsu_wds[social][linkedin]',
 			array(
 				'capability' => 'edit_theme_options',
@@ -106,6 +115,16 @@ class Customizer_Social {
 				'label'    => 'Instagram URL',
 				'section'  => $this->section_id,
 				'settings' => 'wsu_wds[social][instagram]',
+				'type'     => 'text',
+			)
+		);
+
+		$wp_customize->add_control( 
+			'wsu_wds_social_youtube_control',
+			array(
+				'label'    => 'YouTube URL',
+				'section'  => $this->section_id,
+				'settings' => 'wsu_wds[social][youtube]',
 				'type'     => 'text',
 			)
 		);
