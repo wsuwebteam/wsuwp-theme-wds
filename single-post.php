@@ -15,7 +15,7 @@
 				<?php if ( get_theme_mod( 'wsu_wds_template_post_show_breadcrumbs', true ) ) : ?><?php get_template_part( 'template-component/component-breadcrumb', 'post' ); ?><?php endif; ?>
 				<?php do_action('wsu_wds_theme_after_breadcrumbs', 'post'); ?>
 				<article class="wsu-article">
-					<?php if ( get_theme_mod( 'wsu_wds_template_post_show_title', true ) ) : ?>
+					<?php if ( get_theme_mod( 'wsu_wds_template_post_show_title', true ) && apply_filters( 'wsu_wds_template_show_title', true ) ) : ?>
 						<header class="wsu-article-header">
 							<h1  class="wsu-article-header__title"><?php the_title(); ?></h1>
 							<?php if ( get_theme_mod( 'wsu_wds_template_post_show_publish_date', true ) ) : ?><?php get_template_part( 'template-component/component-post-published-date', 'post' ); ?><?php endif; ?>
