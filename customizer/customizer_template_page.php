@@ -20,7 +20,7 @@ class Customizer_Template_Page {
 		$wp_customize->add_section(
 			$this->section_id,
 			array(
-				'title'       => 'Single Page Template',
+				'title'       => 'Page Template',
 				'description' => '',
 				'capability'  => 'edit_theme_options',
 				'panel'       => $panel,
