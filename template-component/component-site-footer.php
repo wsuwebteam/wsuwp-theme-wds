@@ -1,6 +1,9 @@
 <?php if ( empty( get_theme_mod( 'wsu_wds_site_footer_hide', false ) ) ) : ?>
 <footer class="wsu-footer-site<?php if ( ! empty( get_theme_mod( 'wsu_wds_site_footer_style', false ) ) ) : ?> wsu-footer-site--<?php echo esc_attr( get_theme_mod( 'wsu_wds_site_footer_style', '' ) ); ?><?php endif; ?>">
 	<div class="wsu-footer-site__content">
+		<?php if ( WSUWP\Theme\WDS\WDS_Options::get( 'widget_areas', 'footer_top', false ) && is_active_sidebar( 'footer_top_widgets' ) ) : ?>
+			<?php dynamic_sidebar( 'footer_top_widgets' ); ?>
+		<?php endif; ?>
 		<?php if ( has_nav_menu( 'offsite' ) ) : ?>
 			<h2 class="wsu-footer-site__offsite-title">More Resources</h2>
 			<?php
@@ -32,6 +35,9 @@
 				)
 			);
 		?>
+		<?php endif; ?>
+		<?php if ( is_active_sidebar( 'footer_widgets' ) ) : ?>
+			<?php dynamic_sidebar( 'footer_widgets' ); ?>
 		<?php endif; ?>
 		<?php get_template_part( 'template-component/component-site-contact' ); ?>
 		<?php get_template_part( 'template-component/component-site-social' ); ?>

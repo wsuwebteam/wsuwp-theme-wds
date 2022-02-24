@@ -61,6 +61,15 @@ class Customizer_Site_Footer {
 			)
 		);
 
+		$wp_customize->add_setting(
+			'wsu_wds[widget_areas][footer_top]',
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => false,
+				'type'       => 'option',
+			)
+		);
+
 		$wp_customize->add_control(
 			"{$prefix}_hide_control",
 			array(
@@ -103,6 +112,16 @@ class Customizer_Site_Footer {
 				'section'  => $this->section_id,
 				'settings' => "{$prefix}_caption",
 				'type'     => 'textarea',
+			)
+		);
+
+		$wp_customize->add_control(
+			'wsu_wds_widget_areas_footer_top_control',
+			array(
+				'settings'    => 'wsu_wds[widget_areas][footer_top]',
+				'type'        => 'checkbox',
+				'section'     => $this->section_id,
+				'label'       => __( 'Add Footer Top Widget Area' ),
 			)
 		);
 
