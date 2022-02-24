@@ -83,6 +83,34 @@ class Sidebars {
 			)
 		);
 
+		register_sidebar(
+			array(
+				'name'          => 'Footer Widgets',
+				'id'            => 'footer_widgets',
+				'description'   => 'Widgets in this area will be shown in the site footer.',
+				'before_widget' => '',
+				'after_widget'  => '',
+				'before_title'  => '<h2>',
+				'after_title'   => '</h2>',
+			)
+		);
+
+		if ( WDS_Options::get( 'widget_areas', 'footer_top', false ) ) {
+
+			register_sidebar(
+				array(
+					'name'          => 'Footer Top Widgets',
+					'id'            => 'footer_top_widgets',
+					'description'   => 'Widgets in this area will be shown at the top of the site footer.',
+					'before_widget' => '',
+					'after_widget'  => '',
+					'before_title'  => '<h2>',
+					'after_title'   => '</h2>',
+				)
+			);
+
+		}
+
 	}
 
 
