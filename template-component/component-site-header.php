@@ -13,16 +13,20 @@ if ( is_front_page() && ! get_theme_mod('wsu_wds_site_header_hide', false ) ) {
 <?php if ( empty( $is_hiden ) ) : ?>
 <header class="wsu-header-site<?php if ( ! empty( get_theme_mod('wsu_wds_site_header_style', false ) ) ) : ?> wsu-header-site--<?php echo esc_attr( get_theme_mod( 'wsu_wds_site_header_style', '' ) ); ?><?php endif; ?>">
 	<div class="wsu-header-site__label">
-		<a class="wsu-header-site__title-link" href="<?php echo esc_url( get_home_url() ); ?>">
+		<?php if ( empty( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'subtitle_link', '' ) ) ) : ?><a class="wsu-header-site__title-link" href="<?php echo esc_url( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'subtitle_link', get_home_url() ) ); ?>"><?php endif; ?>
 		<?php if ( empty( get_theme_mod( 'wsu_wds_site_header_subtitle_hide', false ) ) ) : ?>
 			<div class="wsu-header-site__subtitle">
+				<?php if ( ! empty( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'subtitle_link', '' ) ) ) : ?><a class="wsu-header-site__subtitle-link" href="<?php echo esc_url( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'subtitle_link', '' ) ); ?>"><?php endif; ?>
 				<?php echo esc_attr( get_bloginfo( 'description' ) ); ?>
+				<?php if ( ! empty( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'subtitle_link', '' ) ) ) : ?></a><?php endif; ?>
 			</div>
 			<?php endif; ?>
 			<div class="wsu-header-site__title">
+				<?php if ( ! empty( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'subtitle_link', '' ) ) ) : ?><a class="wsu-header-site__title-link" href="<?php echo esc_url( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'title_link', get_home_url() ) ); ?>"><?php endif; ?>
 				<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>
+				<?php if ( ! empty( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'subtitle_link', '' ) ) ) : ?></a><?php endif; ?>
 			</div>
-		</a>
+		<?php if ( empty( WSUWP\Theme\WDS\WDS_Options::get( 'site', 'subtitle_link', '' ) ) ) : ?></a><?php endif; ?>
 	</div>
 	<?php if ( 'horizontal' === get_theme_mod('wsu_wds_site_navigation_style', false ) ) : ?>
 		<nav class="wsu-navigation-site-horizontal" aria-expanded="false" aria-haspopup="true" aria-label="Site menu"">
