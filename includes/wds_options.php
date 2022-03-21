@@ -10,8 +10,18 @@ class WDS_Options {
 
 		if ( is_array( $wds_options ) && ! empty( $wds_options[ $group ] ) ) {
 
-			return ( isset( $wds_options[ $group ][ $property ] ) ) ? $wds_options[ $group ][ $property ] : $default;
+			if ( isset( $wds_options[ $group ][ $property ] ) ) {
 
+				if ( ! empty( $wds_options[ $group ][ $property ] ) ) {
+
+					return $wds_options[ $group ][ $property ];
+
+				} else {
+
+					return $default;
+
+				}
+			}
 		} else {
 
 			return $default;
