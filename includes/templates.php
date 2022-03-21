@@ -8,7 +8,42 @@ class Template {
 
 		add_filter( 'wsu_wds_template_show_title', array( __CLASS__, 'show_title' ) );
 
+		add_action( 'after_setup_theme', array( __CLASS__, 'add_theme_filters' ), 99 );
+
 		self::add_pagination_filters();
+
+	}
+
+
+	public static function add_theme_filters() {
+
+		add_filter( 'document_title_parts', array( __CLASS__, 'filter_document_title_parts' ), 9999 );
+
+		add_filter( 'document_title_separator', array( __CLASS__, 'filter_title_separator' ), 9999  );
+
+	}
+
+	public static function filter_title_separator( $sep ) {
+
+		return '|';
+
+	}
+
+
+	public static function filter_document_title_parts( $title_parts ) {
+
+		if ( is_array( $title_parts ) ) {
+
+			$title_parts['network'] = ' Washington State University';
+
+			if ( ! empty( $title_parts['tagline'] ) ) {
+
+				unset( $title_parts['tagline'] );
+
+			}
+		}
+
+		return $title_parts;
 
 	}
 

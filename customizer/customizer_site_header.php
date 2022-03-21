@@ -61,6 +61,24 @@ class Customizer_Site_Header {
 			)
 		);
 
+		$wp_customize->add_setting(
+			"wsu_wds[site][title_link]",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => '',
+				'type'       => 'option',
+			)
+		);
+
+		$wp_customize->add_setting(
+			"wsu_wds[site][subtitle_link]",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => '',
+				'type'       => 'option',
+			)
+		);
+
 		$wp_customize->add_control(
 			"{$prefix}_hide_control",
 			array(
@@ -103,6 +121,26 @@ class Customizer_Site_Header {
 					''        => 'Default',
 					'dark'    => 'Dark',
 				),
+			)
+		);
+
+		$wp_customize->add_control( 
+			'wsu_wds_site_title_link_control',
+			array(
+				'label'    => 'Custom Site Title Link',
+				'section'  => $this->section_id,
+				'settings' => 'wsu_wds[site][title_link]',
+				'type'     => 'text',
+			)
+		);
+
+		$wp_customize->add_control( 
+			'wsu_wds_site_subtitle_link_control',
+			array(
+				'label'    => 'Custom Site Subtitle Link',
+				'section'  => $this->section_id,
+				'settings' => 'wsu_wds[site][subtitle_link]',
+				'type'     => 'text',
 			)
 		);
 
