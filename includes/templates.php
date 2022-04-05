@@ -76,6 +76,7 @@ class Template {
 				'<h1',
 				'tag":"h1"',
 				'wsuwp/pagetitle',
+				'Tag":"h1"',
 			);
 
 			foreach ( $has_title as $search_string ) {
@@ -114,6 +115,7 @@ class Template {
 			'<h1',
 			'tag":"h1"',
 			'wsuwp/pagetitle',
+			'Tag":"h1"',
 		);
 
 		foreach ( $has_title as $search_string ) {
