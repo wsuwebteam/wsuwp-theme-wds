@@ -15,7 +15,9 @@ class Customizer_Template_Archive {
 
 	protected function add_customizer( $wp_customize, $panel = false ) {
 
-		$prefix   = 'wsu_wds_template';
+		$prefix  = 'wsu_wds_template';
+		$context = 'post_archive';
+
 
 		$sidebars = Sidebars::get_sidebars();
 		$sidebars['none'] = 'None';
@@ -32,7 +34,23 @@ class Customizer_Template_Archive {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_archive_show_sidebar",
+			"{$prefix}_post_archive_sidebar_active",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => true,
+			)
+		);
+
+		$wp_customize->add_setting(
+			"{$prefix}_post_archive_pagination",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => true,
+			)
+		);
+
+		$wp_customize->add_setting(
+			"{$prefix}_post_archive_show_sidebar",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => 'sidebar_post',
@@ -40,7 +58,7 @@ class Customizer_Template_Archive {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_archive_show_breadcrumbs",
+			"{$prefix}_post_archive_breadcrumbs",
 			array(
 				'capability' => 'edit_theme_options',
 				'default'    => true,
@@ -48,9 +66,42 @@ class Customizer_Template_Archive {
 		);
 
 		$wp_customize->add_control(
-			"{$prefix}_archive_show_sidebar_control",
+			"{$prefix}_post_archive_breadcrumbs_control",
 			array(
-				'settings'    => "{$prefix}_archive_show_sidebar",
+				'settings'    => "{$prefix}_post_archive_breadcrumbs",
+				'type'        => 'checkbox',
+				'section'     => $this->section_id,
+				'label'       => 'Show Breadcrumbs (if activated)',
+			)
+		);
+
+		include __DIR__ . '/control-groups/customizer-published-date-group.php';
+		include __DIR__ . '/control-groups/customizer-byline-group.php';
+
+		$wp_customize->add_control(
+			"{$prefix}_post_archive_pagination_control",
+			array(
+				'settings'    => "{$prefix}_post_archive_pagination",
+				'type'        => 'checkbox',
+				'section'     => $this->section_id,
+				'label'       => 'Show Pagination',
+			)
+		);
+
+		$wp_customize->add_control(
+			"{$prefix}_post_archive_sidebar_active_control",
+			array(
+				'settings'    => "{$prefix}_post_archive_sidebar_active",
+				'type'        => 'checkbox',
+				'section'     => $this->section_id,
+				'label'       => 'Show Sidebar',
+			)
+		);
+
+		$wp_customize->add_control(
+			"{$prefix}_post_archive_sidebar_active",
+			array(
+				'settings'    => "{$prefix}_post_archive_show_sidebar",
 				'type'        => 'select',
 				'section'     => $this->section_id,
 				'label'       => __( 'Display Sidebar' ),
@@ -58,20 +109,12 @@ class Customizer_Template_Archive {
 			)
 		);
 
-		$wp_customize->add_control(
-			"{$prefix}_archive_show_breadcrumbs_control",
-			array(
-				'settings'    => "{$prefix}_archive_show_breadcrumbs",
-				'type'        => 'checkbox',
-				'section'     => $this->section_id,
-				'label'       => 'Show Breadcrumbs (if activated)',
-			)
-		);
+		
 
 		$wp_customize->add_control(
-			"{$prefix}_archive_show_title_control",
+			"{$prefix}_post_archive_show_title_control",
 			array(
-				'settings'    => "{$prefix}_archive_show_title",
+				'settings'    => "{$prefix}_post_archive_show_title",
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Title',

@@ -8,6 +8,8 @@ class Template {
 
 		add_filter( 'wsu_wds_template_show_title', array( __CLASS__, 'show_title' ) );
 
+		add_filter( 'wsu_wds_template', array( __CLASS__, 'filter_wsu_wds_template' ), 10, 3 );
+
 		add_action( 'after_setup_theme', array( __CLASS__, 'add_theme_filters' ), 99 );
 
 		self::add_pagination_filters();
@@ -26,6 +28,56 @@ class Template {
 	public static function filter_title_separator( $sep ) {
 
 		return '|';
+
+	}
+
+
+	public static function get_template_part( $template, $slug, $context = false, $args = array() ) {
+
+		$context       = ( ! $context ) ? $slug : $context;
+		$template      = apply_filters( 'wsu_wds_template', $template, $context, $args );
+		$slug          = apply_filters( 'wsu_wds_template_slug', $slug, $template, $context, $args );
+
+		if ( ! empty( $template ) ) {
+
+			$args['context'] = $context;
+
+			get_template_part( $template, $slug, $args );
+
+		}
+
+	}
+
+
+	public static function filter_wsu_wds_template( $template, $context, $args = array() ) {
+
+		$prefix = 'wsu_wds_template';
+		$context = str_replace( '-', '_', $context );
+
+		switch ( $template ) {
+
+			case 'template-parts/sidebar':
+				$template = ( ! empty( get_theme_mod( $prefix . '_' . $context . '_sidebar_active', true ) ) ) ? $template : '';
+				break;
+			case 'template-component/component-pagination':
+				$template = ( ! empty( get_theme_mod( $prefix . '_' . $context . '_pagination', true ) ) ) ? $template : '';
+				break;
+			case 'template-component/component-breadcrumb':
+				$template = ( ! empty( get_theme_mod( $prefix . '_' . $context . '_breadcrumbs', true ) ) ) ? $template : '';
+				break;
+			case 'template-component/component-post-published-date':
+				$template = ( ! empty( get_theme_mod( $prefix . '_' . $context . '_show_publish_date', true ) ) ) ? $template : '';
+				break;
+			case 'template-component/component-post-published-date':
+				$template = ( ! empty( get_theme_mod( $prefix . '_' . $context . '_show_publish_date', true ) ) ) ? $template : '';
+				break;
+			case 'template-component/component-post-published-by':
+				$template = ( ! empty( get_theme_mod( $prefix . '_' . $context . '_show_byline', true ) ) ) ? $template : '';
+				break;
+
+		}
+
+		return $template;
 
 	}
 
@@ -76,6 +128,7 @@ class Template {
 				'<h1',
 				'tag":"h1"',
 				'wsuwp/pagetitle',
+				'Tag":"h1"',
 			);
 
 			foreach ( $has_title as $search_string ) {
@@ -114,6 +167,7 @@ class Template {
 			'<h1',
 			'tag":"h1"',
 			'wsuwp/pagetitle',
+			'Tag":"h1"',
 		);
 
 		foreach ( $has_title as $search_string ) {
