@@ -61,6 +61,32 @@ class Customizer_Global_Header {
 			)
 		);
 
+		$wp_customize->add_setting(
+			'wsu_wds[site_info][campus]',
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => 'wsu',
+				'type'       => 'option',
+			)
+		);
+
+		$wp_customize->add_control(
+			"{$prefix}_campus_control",
+			array(
+				'settings'    => 'wsu_wds[site_info][campus]',
+				'type'        => 'select',
+				'section'     => $this->section_id,
+				'label'       => 'Campus Title',
+				'description' => 'Change global header campus title.',
+				'choices'     => array(
+					'wsu'     => 'Washington State University',
+					'global'  => 'WSU Global Campus',
+					'spokane' => 'WSU Spokane',
+					'everett' => 'WSU Everett',
+				),
+			)
+		);
+
 		if ( Customizer::is_authorized_user() ) {
 
 			$wp_customize->add_control(
@@ -75,6 +101,7 @@ class Customizer_Global_Header {
 			);
 
 		}
+
 
 		$wp_customize->add_control(
 			"{$prefix}_style_control",
