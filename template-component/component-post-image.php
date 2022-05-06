@@ -1,5 +1,5 @@
 <?php
-$image_size = ( ! empty( $args['image_size'] ) ) ? $args['image_size'] : 'medium';
+$image_size = ( ! empty( $args['image_size'] ) ) ? $args['image_size'] : 'full';
 ?>
 <?php if ( has_post_thumbnail() ) :
 	$image_array = wp_get_attachment_image_src( get_post_thumbnail_id(), $image_size );
