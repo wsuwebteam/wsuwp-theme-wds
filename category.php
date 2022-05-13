@@ -19,6 +19,7 @@
 				</header>
 			<?php endif; ?>
 			<?php do_action('wsu_wds_theme_after_header', 'category'); ?>
+			<?php Template::get_template_part( 'template-parts/taxonomy-description', 'category' ); ?>
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 					<?php get_template_part( 'template-component/component-post-index-card', 'reversed' ); ?>

@@ -45,14 +45,6 @@ class Customizer_Template_Taxonomy {
 		);
 
 		$wp_customize->add_setting(
-			"{$prefix}_taxonomy_show_description",
-			array(
-				'capability' => 'edit_theme_options',
-				'default'    => false,
-			)
-		);
-
-		$wp_customize->add_setting(
 			"{$prefix}_taxonomy_show_publish_date",
 			array(
 				'capability' => 'edit_theme_options',
@@ -109,6 +101,14 @@ class Customizer_Template_Taxonomy {
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Title',
+			)
+		);
+
+		$wp_customize->add_setting(
+			"{$prefix}_taxonomy_show_description",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => false,
 			)
 		);
 

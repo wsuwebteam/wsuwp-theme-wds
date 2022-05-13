@@ -20,6 +20,8 @@ class Customizer_Template_Category {
 		$sidebars = Sidebars::get_sidebars();
 		$sidebars['none'] = 'None';
 
+		$context = 'category';
+
 		$wp_customize->add_section(
 			$this->section_id,
 			array(
@@ -75,6 +77,24 @@ class Customizer_Template_Category {
 				'type'        => 'checkbox',
 				'section'     => $this->section_id,
 				'label'       => 'Show Title',
+			)
+		);
+
+		$wp_customize->add_setting(
+			"{$prefix}_{$context}_show_description",
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => false,
+			)
+		);
+
+		$wp_customize->add_control(
+			"{$prefix}_{$context}_show_description_control",
+			array(
+				'settings'    => "{$prefix}_{$context}_show_description",
+				'type'        => 'checkbox',
+				'section'     => $this->section_id,
+				'label'       => 'Show Description',
 			)
 		);
 

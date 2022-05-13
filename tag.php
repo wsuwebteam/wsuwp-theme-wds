@@ -18,6 +18,7 @@
 					<h1  class="wsu-page-header__title"><?php single_term_title(); ?></h1>
 				</header>
 			<?php endif; ?>
+			<?php Template::get_template_part( 'template-parts/taxonomy-description', 'tag' ); ?>
 			<?php do_action('wsu_wds_theme_after_header', 'tag'); ?>
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
