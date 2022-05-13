@@ -61,6 +61,31 @@ class Customizer_Advanced {
 			)
 		);
 
+		$wp_customize->add_setting(
+			'wsu_wds[template][width]',
+			array(
+				'capability' => 'edit_theme_options',
+				'default'    => '',
+				'type'       => 'option',
+			)
+		);
+
+		$wp_customize->add_control(
+			"{$prefix}_template_width_control",
+			array(
+				'settings'    => 'wsu_wds[template][width]',
+				'type'        => 'select',
+				'section'     => $this->section_id,
+				'label'       => __( 'Content Width' ),
+				'description' => __( 'Change content width.' ),
+				'choices'     => array(
+					''        => 'Default (1200px)',
+					'wide'    => 'Wide (1400px)',
+					'xwide'   => 'xWide (1600px)',
+				),
+			)
+		);
+
 
 		$wp_customize->add_control(
 			'wsu_wds_scripts_syndicate_control',
