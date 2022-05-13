@@ -37,6 +37,7 @@ class Customizer {
 		require_once get_template_directory() . '/customizer/customizer_template_single.php';
 		require_once get_template_directory() . '/customizer/customizer_template_archive.php';
 		require_once get_template_directory() . '/customizer/customizer_template_category.php';
+		require_once get_template_directory() . '/customizer/customizer_template_taxonomy.php';
 		require_once get_template_directory() . '/customizer/customizer_template_tag.php';
 
 		add_action( 'customize_register', array( __CLASS__, 'setup_customizer' ) );
@@ -117,6 +118,7 @@ class Customizer {
 		$customizers[] = new Customizer_Template_Single( $wp_customize, $panel );
 		$customizers[] = new Customizer_Template_Archive( $wp_customize, $panel );
 		$customizers[] = new Customizer_Template_Category( $wp_customize, $panel );
+		$customizers[] = new Customizer_Template_Taxonomy( $wp_customize, $panel );
 		$customizers[] = new Customizer_Template_Tag( $wp_customize, $panel );
 
 	}

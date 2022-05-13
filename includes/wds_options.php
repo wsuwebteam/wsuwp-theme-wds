@@ -30,4 +30,20 @@ class WDS_Options {
 
 	}
 
+	public static function get_option_class( $group, $property, $prefix, $default = '' ) {
+
+		$value = self::get( $group, $property, $default );
+
+		$class = '';
+
+		if ( ! empty( $value ) && 'default' !== $value ) {
+
+			$class = $prefix . $value;
+
+		}
+
+		return $class;
+
+	}
+
 }

@@ -7,7 +7,7 @@
 <div class="wsu-wrapper-site">
 	<!-- SITE CONTAINER:START -->
 	<?php get_template_part( 'template-component/component-site-header', 'tag' ); ?>
-	<div class="wsu-wrapper-content">
+	<div class="wsu-wrapper-content <?php echo esc_attr( WDS_Options::get_option_class( 'template', 'width', 'wsu-wrapper-content--' ) ); ?>">
 		<?php do_action('wsu_wds_theme_before_main', 'tag'); ?>
 		<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
 		<?php do_action('wsu_wds_theme_main', 'tag'); ?>
@@ -18,6 +18,7 @@
 					<h1  class="wsu-page-header__title"><?php single_term_title(); ?></h1>
 				</header>
 			<?php endif; ?>
+			<?php Template::get_template_part( 'template-parts/taxonomy-description', 'tag' ); ?>
 			<?php do_action('wsu_wds_theme_after_header', 'tag'); ?>
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
