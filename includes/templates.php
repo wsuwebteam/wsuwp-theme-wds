@@ -60,7 +60,7 @@ class Template {
 				$template = ( ! empty( get_theme_mod( "{$prefix}_sidebar_active", true ) ) ) ? $template : '';
 				break;
 			case 'template-parts/taxonomy-description':
-				$template = ( ! empty( get_theme_mod( "{$prefix}_show_description", true ) ) ) ? $template : '';
+				$template = ( ! empty( get_theme_mod( "{$prefix}_show_description", false ) ) ) ? $template : '';
 				break;
 			case 'template-component/component-pagination':
 				$template = ( ! empty( get_theme_mod( "{$prefix}_pagination", true ) ) ) ? $template : '';
