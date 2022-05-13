@@ -59,6 +59,9 @@ class Template {
 			case 'template-parts/sidebar':
 				$template = ( ! empty( get_theme_mod( "{$prefix}_sidebar_active", true ) ) ) ? $template : '';
 				break;
+			case 'template-parts/taxonomy-description':
+				$template = ( ! empty( get_theme_mod( "{$prefix}_show_description", true ) ) ) ? $template : '';
+				break;
 			case 'template-component/component-pagination':
 				$template = ( ! empty( get_theme_mod( "{$prefix}_pagination", true ) ) ) ? $template : '';
 				break;
