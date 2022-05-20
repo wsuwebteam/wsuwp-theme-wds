@@ -25,6 +25,7 @@ class Theme {
 
 		self::load_class( 'query' );
 
+		require_once __DIR__ . '/template-part.php';
         require_once __DIR__ . '/templates.php';
 		require_once __DIR__ . '/scripts.php';
         require_once __DIR__ . '/customizer.php';

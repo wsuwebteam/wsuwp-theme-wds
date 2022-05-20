@@ -15,5 +15,6 @@ $context = ( ! empty( $args['context'] ) ) ? $args['context'] : 'page';
 		<?php Template::get_template_part( 'template-component/component-post-published-by', 'article-index', $context ); ?>
 		<?php Template::get_template_part( 'template-component/component-post-categories', 'article-index', $context ); ?>
 		<?php Template::get_template_part( 'template-component/component-post-tags', 'article-index', $context ); ?>
+		<?php do_action( 'wds_template_part', 'post_meta_location_taxonomy', $context, false ); ?>
 	</div>
 </article>
