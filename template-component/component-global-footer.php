@@ -1,7 +1,7 @@
 <?php if ( empty( get_theme_mod('wsu_wds_global_footer_hide', false ) ) ) : ?>
 <footer class="wsu-footer-global<?php if ( ! empty( get_theme_mod('wsu_wds_global_footer_style', false ) ) ) : ?> wsu-footer-global--<?php echo esc_attr( get_theme_mod( 'wsu_wds_global_footer_style', '' ) ); ?><?php endif; ?>">
 	<div class="wsu-footer-global__copyright">
-		© Washington State University 2021
+		© Washington State University <?php echo esc_attr( date( 'Y' ) ); ?>
 	</div>
 	<nav class="wsu-footer-global__navigation">
 		<ul class="wsu-menu-tertiary">

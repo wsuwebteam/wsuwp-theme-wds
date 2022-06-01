@@ -14,9 +14,11 @@ class Template_Part {
 
 		$context = str_replace( '-', '_', $context );
 
-		$part_key = 'wsu_wds_template_' . $context . '_' . $part_slug . '_show';
+		$part_slug = str_replace( '-', '_', $part_slug );
 
-		$show_part = get_theme_mod( $part_key, $default_show );
+		$theme_mod_key = 'wsu_wds_template_' . $context . '_' . $part_slug . '_show';
+
+		$show_part =  WDS_Options::get_legacy_check( "template_{$context}", $part_slug, $default_show, $theme_mod_key );
 
 		if ( $show_part ) {
 

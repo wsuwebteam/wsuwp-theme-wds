@@ -12,7 +12,52 @@ class Template {
 
 		add_action( 'after_setup_theme', array( __CLASS__, 'add_theme_filters' ), 99 );
 
+		add_action( 'pre_get_posts', array( __CLASS__, 'wsu_template_query_order' ), 1 );
+
 		self::add_pagination_filters();
+
+	}
+
+
+	public static function wsu_template_query_order( $query ) {
+
+		if ( ! is_admin() && $query->is_main_query() ) {
+
+			$context = self::get_context();
+
+			if ( $context ) {
+
+				$option_key = "template_{$context}";
+
+				$query_order = WDS_Options::get( $option_key, 'query_order', '' );
+				$query_sort = WDS_Options::get( $option_key, 'query_sort', '' );
+
+				if ( ! empty( $query_order ) ) {
+
+					$query->set( 'orderby', $query_order );
+
+				}
+
+				if ( ! empty( $query_sort ) ) {
+
+					$query->set( 'order', $query_sort );
+
+				}
+			}
+		}
+
+	}
+
+
+	public static function get_context() {
+
+		if ( is_category() ) {
+
+			return 'category';
+
+		}
+
+		return false;
 
 	}
 
