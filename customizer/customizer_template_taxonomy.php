@@ -17,6 +17,8 @@ class Customizer_Template_Taxonomy {
 
 		$prefix   = 'wsu_wds_template';
 
+		$context = 'taxonomy';
+
 		$wp_customize->add_section(
 			$this->section_id,
 			array(
@@ -172,23 +174,8 @@ class Customizer_Template_Taxonomy {
 			)
 		);
 
-		$wp_customize->add_setting(
-			"{$prefix}_taxonomy_post_meta_location_taxonomy_show",
-			array(
-				'capability' => 'edit_theme_options',
-				'default'    => false,
-			)
-		);
-
-		$wp_customize->add_control(
-			"{$prefix}_taxonomy_post_meta_location_taxonomy_show_control",
-			array(
-				'settings'    => "{$prefix}_taxonomy_post_meta_location_taxonomy_show",
-				'type'        => 'checkbox',
-				'section'     => $this->section_id,
-				'label'       => 'Show Locations Taxnomomy',
-			)
-		);
+		include __DIR__ . '/control-groups/customizer-query-order.php';
+		include __DIR__ . '/control-groups/customizer-meta-location-taxonomy.php';
 
 	}
 

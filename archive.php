@@ -21,7 +21,7 @@
 			<?php do_action('wsu_wds_theme_after_header', 'archive'); ?>
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part( 'template-component/component-post-index-card', 'reversed' ); ?>
+					<?php get_template_part( 'template-component/component-post-index-card', 'reversed', array( 'context' => 'archive' ) ); ?>
 				<?php endwhile; ?>
 				<?php get_template_part( 'template-component/component-pagination', 'archive' ); ?>
 			<?php endif; ?>

@@ -98,23 +98,8 @@ class Customizer_Template_Category {
 			)
 		);
 
-		$wp_customize->add_setting(
-			"{$prefix}_{$context}_post_meta_location_taxonomy_show",
-			array(
-				'capability' => 'edit_theme_options',
-				'default'    => false,
-			)
-		);
-
-		$wp_customize->add_control(
-			"{$prefix}_{$context}_post_meta_location_taxonomy_show_control",
-			array(
-				'settings'    => "{$prefix}_{$context}_post_meta_location_taxonomy_show",
-				'type'        => 'checkbox',
-				'section'     => $this->section_id,
-				'label'       => 'Show Locations Taxnomomy',
-			)
-		);
+		include __DIR__ . '/control-groups/customizer-query-order.php';
+		include __DIR__ . '/control-groups/customizer-meta-location-taxonomy.php';
 
 	}
 
