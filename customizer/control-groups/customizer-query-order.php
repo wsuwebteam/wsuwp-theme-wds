@@ -17,7 +17,7 @@ $wp_customize->add_control(
 		'settings' => "wsu_wds[template_{$context}][query_order]",
 		'type'     => 'select',
 		'choices'  => array(
-			''      => 'Default',
+			''      => 'Publish Date',
 			'title' => 'Title',
 		),
 	)
@@ -40,8 +40,8 @@ $wp_customize->add_control(
 		'settings' => "wsu_wds[template_{$context}][query_sort]",
 		'type'     => 'select',
 		'choices'  => array(
-			''    => 'Default',
-			'ASC' => 'ASC',
+			''    => 'Descending',
+			'ASC' => 'Ascending',
 		),
 	)
 );
