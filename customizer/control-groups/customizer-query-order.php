@@ -10,7 +10,7 @@ $wp_customize->add_setting(
 );
 
 $wp_customize->add_control(
-	'wsu_wds_template_{$context}_query_order_control',
+	"wsu_wds_template_{$context}_query_order_control",
 	array(
 		'label'    => 'Query Order',
 		'section'  => $this->section_id,
@@ -33,7 +33,7 @@ $wp_customize->add_setting(
 );
 
 $wp_customize->add_control(
-	'wsu_wds_template_{$context}_query_sort_control',
+	"wsu_wds_template_{$context}_query_sort_control",
 	array(
 		'label'    => 'Query Sort',
 		'section'  => $this->section_id,
