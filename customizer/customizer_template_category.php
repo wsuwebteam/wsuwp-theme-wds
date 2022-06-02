@@ -99,7 +99,7 @@ class Customizer_Template_Category {
 		);
 
 		include __DIR__ . '/control-groups/customizer-query-order.php';
-		include __DIR__ . '/control-groups/customizer-meta-location-taxonomy.php';
+		include __DIR__ . '/control-groups/customizer-meta-location-taxonomy.php'; 
 
 	}
 
