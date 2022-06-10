@@ -98,6 +98,8 @@ class Customizer_Template_Tag {
 			)
 		);
 
+		include __DIR__ . '/control-groups/customizer-query-order.php';
+
 	}
 
 }

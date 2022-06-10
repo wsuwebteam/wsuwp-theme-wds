@@ -23,7 +23,7 @@ class Template {
 
 		if ( ! is_admin() && $query->is_main_query() ) {
 
-			$context = self::get_context();
+			$context = Context::get();
 
 			if ( $context ) {
 
@@ -45,19 +45,6 @@ class Template {
 				}
 			}
 		}
-
-	}
-
-
-	public static function get_context() {
-
-		if ( is_category() ) {
-
-			return 'category';
-
-		}
-
-		return false;
 
 	}
 
