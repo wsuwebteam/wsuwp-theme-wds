@@ -4,7 +4,7 @@
 class Theme {
 
 
-	protected static $version = '1.4.6';
+	protected static $version = '1.5.0';
 
 
 	public static function get( $property ) {
@@ -25,6 +25,7 @@ class Theme {
 
 		self::load_class( 'query' );
 
+		require_once __DIR__ . '/context.php';
 		require_once __DIR__ . '/template-part.php';
         require_once __DIR__ . '/templates.php';
 		require_once __DIR__ . '/scripts.php';
