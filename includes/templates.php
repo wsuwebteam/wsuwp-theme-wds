@@ -25,6 +25,8 @@ class Template {
 
 			$context = Context::get();
 
+			$context = str_replace( '-', '_', $context );
+
 			if ( $context ) {
 
 				$option_key = "template_{$context}";

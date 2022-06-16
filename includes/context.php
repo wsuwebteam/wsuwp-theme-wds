@@ -23,11 +23,15 @@ class Context {
 
 			return 'single';
 
+		} elseif ( is_home() ) { 
+
+			return 'post-archive';
+
 		} elseif ( is_archive() ) {
 
 			if ( is_post_type_archive() ) {
 
-				return 'post-archive';
+				return 'index';
 
 			} elseif ( is_category() ) {
 
