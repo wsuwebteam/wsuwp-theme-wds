@@ -119,6 +119,16 @@ class Template {
 	}
 
 
+	public static function has_sidebar( $context ) {
+
+		$context = str_replace( '-', '_', $context );
+		$prefix  = "wsu_wds_template_{$context}";
+
+		return ( ! empty( get_theme_mod( "{$prefix}_sidebar_active", true ) ) ) ? true : false;
+
+	}
+
+
 	public static function filter_document_title_parts( $title_parts ) {
 
 		if ( is_array( $title_parts ) ) {
