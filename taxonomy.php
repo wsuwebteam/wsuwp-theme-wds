@@ -6,7 +6,7 @@
 <div class="wsu-wrapper-site">
 	<!-- SITE CONTAINER:START -->
 	<?php get_template_part( 'template-component/component-site-header', 'taxonomy' ); ?>
-	<div class="wsu-wrapper-content <?php echo esc_attr( WDS_Options::get_option_class( 'template', 'width', 'wsu-wrapper-content--' ) ); ?>">
+	<div class="wsu-wrapper-content <?php echo esc_attr( WDS_Options::get_option_class( 'template', 'width', 'wsu-wrapper-content--' ) ); ?> <?php if ( Template::has_sidebar( 'taxonomy' ) ) : ?>wsu-wrapper-content--layout-sidebar-right<?php endif; ?>">
 		<?php do_action('wsu_wds_theme_before_main', 'taxonomy'); ?>
 		<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
 			<?php do_action('wsu_wds_theme_main', 'taxonomy'); ?>
