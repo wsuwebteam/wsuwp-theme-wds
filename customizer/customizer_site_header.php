@@ -144,6 +144,30 @@ class Customizer_Site_Header {
 			)
 		);
 
+		$wp_customize->add_setting(
+			'wsu_wds[site_header][type]',
+			array(
+				'capability' => 'upgrade_network',
+				'default'    => 'default',
+				'type'       => 'option',
+			)
+		);
+
+		$wp_customize->add_control(
+			'wsu_wds_site_header_type_control',
+			array(
+				'settings'    => 'wsu_wds[site_header][type]',
+				'type'        => 'select',
+				'section'     => $this->section_id,
+				'label'       => __( 'Header Type' ),
+				'description' => __( 'Change header style.' ),
+				'choices'     => array(
+					'default' => 'Default',
+					'system'    => 'System',
+				),
+			)
+		);
+
 	}
 
 }
