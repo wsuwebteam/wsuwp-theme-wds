@@ -32,6 +32,36 @@ class Template_Part {
 		}
 	}
 
+	public static function get( $part_slug, $modifier, $default_show = true, $args = array() ) {
+
+		switch ( $part_slug ) {
+
+			case 'site-header':
+				self::get_site_header( $part_slug, $modifier, $default_show = true, $args = array() );
+				break;
+			default:
+				get_template_part( $part_slug, $modifier, $args );
+		}
+
+	}
+
+
+	private static function get_site_header( $part_slug, $modifier, $default_show = true, $args = array() ) {
+
+		$site_header_type = WDS_Options::get( 'site_header', 'type', 'default' );
+
+		if ( 'system' === $site_header_type ) {
+
+			get_template_part( 'template-parts/site-header', 'system' );
+
+		} else {
+
+			get_template_part( 'template-component/component-site-header', 'single' );
+
+		}
+
+	}
+
 }
 
 
