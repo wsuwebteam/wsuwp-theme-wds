@@ -43,7 +43,7 @@
 					<?php endif; ?>
 				</ul>
 			</div>
-			<a href="https://search.wsu.edu" class="wsu-button-ui-search" title="Search WSU"></a>
+			<a href="<?php echo get_site_url(); ?>?s=" class="wsu-button-ui-search" title="Search WSU"></a>
 		</nav>
 	</div>
 </header>
