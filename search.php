@@ -27,8 +27,8 @@ $search_term = ( ! empty( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s
 						</div>
 
 						<div class="wsu-search__search-options">
-							<input type="radio" class="wsu-search__search-toggle" id="wsu-search__search-toggle-site" name="search_context" value="site" <?php if ( empty( $_REQUEST['search_context'] ) || 'site' === $_REQUEST['search_context'] ) : ?> checked="checked"<?php endif; ?> /><label for="wsu-search__search-toggle-site" class="wsu-search__search-toggle-label"> This Site</label>
-							<input type="radio" class="wsu-search__search-toggle" id="wsu-search__search-toggle-wsu" name="search_context" value="wsu" <?php if ( 'wsu' === $_REQUEST['search_context'] ) : ?> checked="checked"<?php endif; ?> /><label for="wsu-search__search-toggle-wsu" class="wsu-search__search-toggle-label"> All WSU</label>
+							<input type="radio" class="wsu-search__search-toggle" id="wsu-search__search-toggle-site" name="search_context" value="site" <?php if ( empty( $_REQUEST['search_context'] ) || 'site' === $_REQUEST['search_context'] ) : ?> checked="checked"<?php endif; ?> /><label for="wsu-search__search-toggle-site" class="wsu-search__search-toggle-label">Search <?php echo wp_parse_url( get_site_url(), PHP_URL_HOST ); ?></label>
+							<input type="radio" class="wsu-search__search-toggle" id="wsu-search__search-toggle-wsu" name="search_context" value="wsu" <?php if ( 'wsu' === $_REQUEST['search_context'] ) : ?> checked="checked"<?php endif; ?> /><label for="wsu-search__search-toggle-wsu" class="wsu-search__search-toggle-label">Search all wsu.edu</label>
 						</div>
 
 					</form>
@@ -37,7 +37,6 @@ $search_term = ( ! empty( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s
 			<script async src="https://cse.google.com/cse.js?cx=54e8a42262bb5e5f2"></script>
 			<div class="gcse-searchresults-only" data-queryParameterName="s" <?php if ( empty( $_REQUEST['search_context'] ) || 'site' === $_REQUEST['search_context'] ) : ?>data-as_sitesearch="<?php echo get_site_url(); ?>"<?php endif; ?>></div>
 			<?php if ( ! empty( $_REQUEST['s'] ) ) : ?>
-				
 			<?php endif; ?>
 			<?php do_action('wsu_wds_theme_after_header', 'search'); ?>
 			<?php do_action('wsu_wds_theme_after_content', 'search'); ?>
