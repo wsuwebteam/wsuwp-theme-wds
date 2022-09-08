@@ -137,6 +137,7 @@
 	<div class="wsu-header-system__mobile-wrapper">
 
 		<nav class="wsu-mobile-menu" aria-expanded="true" aria-haspopup="true" aria-label="Site mobile menu">
+			<div class="wsu-mobile-menu__overlay wsu-mobile-menu--toggle"></div>
 			<div class="wsu-mobile-menu__toggle-container">
 				<button class="wsu-mobile-menu__toggle-button wsu-mobile-menu--toggle" id="mobile-menu-open" aria-label="Open site menu">Menu</button>
 			</div>
@@ -151,28 +152,28 @@
 					</div>
 					<div class="wsu-mobile-menu__quicklinks-bottom">
 
-						<form class="wsu-search " method="get">
+						<form class="wsu-search " method="get" action="https://search.wsu.edu/Default.aspx">
 							<div class="wsu-search__search-bar">
+								<input name="sa" value="Search" type="hidden">
 								<input class="wsu-search__input" type="text" aria-lable="Search input" placeholder="Search" name="q" />
 								<button class="wsu-search__submit" aria-lable="Submit Search"></button>
 							</div>
-
-							<div class="wsu-search__search-options">
-								<input type="radio" class="wsu-search__search-toggle" id="wsu-search__search-toggle-site" name="search_context" value="site" checked="checked" /><label for="wsu-search__search-toggle-site" class="wsu-search__search-toggle-label"> This Site</label>
-								<input type="radio" class="wsu-search__search-toggle" id="wsu-search__search-toggle-wsu" name="search_context" value="wsu" /><label for="wsu-search__search-toggle-wsu" class="wsu-search__search-toggle-label"> All WSU</label>
-							</div>
-
 						</form>
-
+						<?php if ( is_nav_menu( 'quicklinks' ) ) : ?>
 						<h2 class="wsu-mobile-menu__quicklinks-bottom-heading">Quick Links</h2>
 						<div class="wsu-mobile-menu__quicklinks-links">
-							<div class="wsu-mobile-menu__quicklinks-link">Link</div>
-							<div class="wsu-mobile-menu__quicklinks-link">Link</div>
-							<div class="wsu-mobile-menu__quicklinks-link">Link</div>
-							<div class="wsu-mobile-menu__quicklinks-link">Link</div>
-							<div class="wsu-mobile-menu__quicklinks-link">Link</div>
-							<div class="wsu-mobile-menu__quicklinks-link">Link</div>
+						<?php
+							wp_nav_menu(
+								array(
+									'menu'           => 'quicklinks',
+									'menu_class'     => 'wsu-mobile-menu__quicklinks-links-menu',
+									'container'      => '',
+									'walker'         => new WSUWP\Theme\WDS\Walker_Nav_Menu_Category(),
+								)
+							);
+							?>
 						</div>
+						<?php endif; ?>
 						<button class="wsu-mobile-menu__quicklinks-close" aria-label="Close">CLOSE SEARCH</button>
 					</div>
 
