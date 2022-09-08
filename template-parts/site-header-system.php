@@ -99,15 +99,15 @@
 	<div class="wsu-header-system__top-bar">
 
 		<div class="wsu-menu-audience ">
-			<a href="#" class="wsu-menu-audience__link">
+			<a href="https://admission.wsu.edu/visits/" class="wsu-menu-audience__link">
 				Visit WSU
 			</a>
 			<hr class="wsu-menu-audience__mobile-separator" />
-			<a href="#" class="wsu-menu-audience__link">
+			<a href="https://admission.wsu.edu/contact/request-info/" class="wsu-menu-audience__link">
 				Request Info
 			</a>
 			<hr class="wsu-menu-audience__mobile-separator" />
-			<a href="#" class="wsu-menu-audience__link">
+			<a href="https://wsu.edu/new/admissions/#apply" class="wsu-menu-audience__link">
 				Apply
 			</a>
 		</div>
@@ -117,7 +117,7 @@
 				Quicklinks / Search
 				<i class="wsu-header-utility-bar__icon"></i>
 			</button>
-			<a href="#" class="wsu-header-utility-bar__cta">Give</a>
+			<a href="https://foundation.wsu.edu/give/" class="wsu-header-utility-bar__cta">Give</a>
 
 		</div>
 
@@ -189,15 +189,15 @@
 					);
 					?>
 				<div class="wsu-menu-audience ">
-					<a href="#" class="wsu-menu-audience__link">
+					<a href="https://admission.wsu.edu/visits/" class="wsu-menu-audience__link">
 						Visit WSU
 					</a>
 					<hr class="wsu-menu-audience__mobile-separator" />
-					<a href="#" class="wsu-menu-audience__link">
+					<a href="https://admission.wsu.edu/contact/request-info/" class="wsu-menu-audience__link">
 						Request Info
 					</a>
 					<hr class="wsu-menu-audience__mobile-separator" />
-					<a href="#" class="wsu-menu-audience__link">
+					<a href="https://wsu.edu/new/admissions/#apply" class="wsu-menu-audience__link">
 						Apply
 					</a>
 				</div>
