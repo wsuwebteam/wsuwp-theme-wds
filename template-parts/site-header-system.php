@@ -113,15 +113,25 @@
 		</div>
 
 		<div class="wsu-header-utility-bar ">
-			<button class="wsu-header-utility-bar__quicklinks" id="open-modal">
+			<button class="wsu-header-utility-bar__quicklinks wsu-utility-panel--open">
 				Quicklinks / Search
-				<i class="wsu-header-utility-bar__icon"></i>
+				<i class="wsu-header-utility-bar__icon wsu-utility-panel--open"></i>
 			</button>
 			<a href="https://foundation.wsu.edu/give/" class="wsu-header-utility-bar__cta">Give</a>
 
 		</div>
 
 	</div>
+	<nav class="wsu-utility-panel" aria-expanded="false">
+		<button class="wsu-utility-panel__overlay wsu-utility-panel--close">Close Utility Panel</button>
+		<div class="wsu-utility-panel__panel">
+			<div class="wsu-utility-panel__content">
+			<?php if ( is_active_sidebar( 'wsu_wds_header_utility' ) ) : ?>
+					<?php dynamic_sidebar( 'wsu_wds_header_utility' ); ?>
+			<?php endif; ?>
+			</div>
+		</div>
+	</nav>
 	<nav class="wsu-header-system__nav">
 		<?php
 			wp_nav_menu(
@@ -205,27 +215,5 @@
 				<button class="wsu-button-ui-close wsu-mobile-menu--close" aria-label="Close site menu">Close</button>
 			</div>
 		</nav>
-
 	</div>
-
-	<div class="wsu-modal wsu-modal__closed" role="dialog" aria-labelledby="modalTitle" aria-modal="true" aria-live="assertive" tabindex="-1">
-		<div class="wsu-modal__content">
-			<div class="wsu-modal__top">
-				<h2 id="modalTitle">Search WSU</h2>
-				<button class="wsu-modal__close-button" aria-label="Close">CLOSE X</button>
-			</div>
-			<div class="wsu-modal__bottom">
-				<div class="wsu-modal__search-bar"></div>
-				<h2 class="wsu-modal__bottom-heading">Quick Links</h2>
-				<div class="wsu-modal__quicklinks">
-					<div class="wsu-modal__quicklink">Link</div>
-					<div class="wsu-modal__quicklink">Link</div>
-					<div class="wsu-modal__quicklink">Link</div>
-					<div class="wsu-modal__quicklink">Link</div>
-					<div class="wsu-modal__quicklink">Link</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 </header>
