@@ -146,7 +146,7 @@
 	</nav>
 	<div class="wsu-header-system__mobile-wrapper">
 
-		<nav class="wsu-mobile-menu" aria-expanded="true" aria-haspopup="true" aria-label="Site mobile menu">
+		<nav class="wsu-mobile-menu" aria-expanded="false" aria-haspopup="true" aria-label="Site mobile menu">
 			<div class="wsu-mobile-menu__overlay wsu-mobile-menu--toggle"></div>
 			<div class="wsu-mobile-menu__toggle-container">
 				<button class="wsu-mobile-menu__toggle-button wsu-mobile-menu--toggle" id="mobile-menu-open" aria-label="Open site menu">Menu</button>
