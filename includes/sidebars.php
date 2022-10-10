@@ -95,6 +95,18 @@ class Sidebars {
 			)
 		);
 
+		register_sidebar(
+			array(
+				'name'          => 'Header Utility',
+				'id'            => 'wsu_wds_header_utility',
+				'description'   => 'Widgets in this area will be shown in the site header.',
+				'before_widget' => '<div class="wsu-widget">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2>',
+				'after_title'   => '</h2>',
+			)
+		);
+
 		if ( WDS_Options::get( 'widget_areas', 'footer_top', false ) ) {
 
 			register_sidebar(
