@@ -67,6 +67,8 @@ class Customizer {
 
 		self::setup_template_customizer( $wp_customize );
 
+		self::setup_beta_customizer( $wp_customize );
+
 	}
 
 
@@ -121,6 +123,21 @@ class Customizer {
 		$customizers[] = new Customizer_Template_Taxonomy( $wp_customize, $panel );
 		$customizers[] = new Customizer_Template_Tag( $wp_customize, $panel );
 
+	}
+
+
+	protected static function setup_beta_customizer( $wp_customize ) {
+
+		$panel = 'wds_theme_options_panel';
+
+		$wp_customize->add_panel(
+			$panel,
+			array(
+				'title' => __( 'WDS (Beta)' ),
+				'description' => 'Settings for WSU Web Design System Theme', // Include html tags such as <p>.
+				'priority' => 999999, // Mixed with top-level-section hierarchy.
+			)
+		);
 	}
 
 }

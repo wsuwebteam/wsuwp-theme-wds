@@ -9,6 +9,7 @@ class Menus {
 		Theme::load_class( 'walker-nav-menu-offsite' );
 		Theme::load_class( 'walker-nav-menu-category' );
 		Theme::load_class( 'walker-nav-menu-footer' );
+		Theme::load_class( 'walker-nav-menu-collapse' );
 
 		add_action( 'after_setup_theme', array( __CLASS__, 'register_menus' ), 0 );
 
