@@ -4,7 +4,7 @@
 class Theme {
 
 
-	protected static $version = '1.5.11';
+	protected static $version = '1.6.0';
 
 
 	public static function get( $property ) {
@@ -35,6 +35,7 @@ class Theme {
 		require_once __DIR__ . '/supports.php';
 		require_once __DIR__ . '/wds_options.php';
 		require_once __DIR__ . '/rest-api.php';
+		require_once __DIR__ . '/theme-blocks.php';
 
 	}
 
