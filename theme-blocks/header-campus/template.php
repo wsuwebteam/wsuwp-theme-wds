@@ -1,11 +1,5 @@
 <header class="wsu-header-campus ">
 	<div class="wsu-header-campus__inner">
-		<div class="wsu-header-campus__global">
-			<ul class="wsu-header-campus__global-menu">
-				<li><a href="#">Washington State University</a></li>
-				<li><a href="#">Pullman Campus</a></li>
-			</ul>
-		</div>
 		<div class="wsu-header-campus__banner">
 
 
@@ -28,7 +22,24 @@
 			</a>
 
 		</div>
-
+		<nav class="wsu-mobile-menu wsu-header-campus__mobile wsu-mobile-menu--style-top-right" aria-expanded="false" aria-haspopup="true" aria-label="Site mobile menu">
+			<button class="wsu-mobile-menu__toggle-button wsu-mobile-menu--toggle" id="mobile-menu-open" aria-label="Open site menu">Menu</button>
+			<button class="wsu-mobile-menu__overlay wsu-mobile-menu--close">Close Menu</button>
+			<div class="wsu-mobile-menu__panel">
+				<div class="wsu-mobile-menu__panel-inner">
+					<?php wp_nav_menu(
+						array(
+							'theme_location' => 'site',
+							'menu_class'     => 'wsu-menu-collapse  wsu-menu-collapse--style-mobile',
+							'container'      => '',
+							'walker'         => new WSUWP\Theme\WDS\Walker_Nav_Menu_Collapse( $args ),
+							'menu_id'        => 'wsu-mobile-menu',
+						)
+					); ?>
+					<button class="wsu-button-ui-close wsu-mobile-menu--close" aria-label="Close site menu">Close</button>
+				</div>
+			</div>
+		</nav>
 		<nav class="wsu-navigation-header ">
 			<?php
 			wp_nav_menu(
