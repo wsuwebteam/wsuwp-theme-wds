@@ -75,7 +75,7 @@ class Theme_Block_Navigation_Vertical extends Theme_Block {
 
 		if ( $block === self::$block_slug ) {
 
-			if ( ! str_contains( $menu_html, 'sub-menu' ) ) {
+			if ( ! strpos( $menu_html, 'sub-menu' ) ) {
 
 				$menu_html = '';
 
