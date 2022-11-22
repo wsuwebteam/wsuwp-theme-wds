@@ -10,7 +10,9 @@ $show_breadcrumbs = ( 'home' === $context ) ? false : true;
 <?php get_template_part( 'template-component/component-global-header', $context ); ?>
 <?php Theme_Blocks::render( 'header_global' ); ?>
 <?php Theme_Blocks::render( 'header_campus' ); ?>
+<?php Theme_Blocks::render( 'navigation_mobile' ); ?>
 <?php Theme_Blocks::render( 'navigation_vertical' ); ?>
+<?php Theme_Blocks::render( 'header_quicklinks' ); ?>
 <?php get_template_part( 'template-component/component-site-navigation-vertical', $context ); ?>
 <!-- SITE WRAPPER:START -->
 <div class="wsu-wrapper-site">
