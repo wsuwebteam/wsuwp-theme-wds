@@ -123,6 +123,18 @@ class Sidebars {
 
 		}
 
+		register_sidebar(
+			array(
+				'name'          => 'Quicklinks',
+				'id'            => 'wsu_wds_quicklinks',
+				'description'   => 'Widgets in this area will be shown in quicklinks bar.',
+				'before_widget' => '<div class="wsu-widget">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h2>',
+				'after_title'   => '</h2>',
+			)
+		);
+
 	}
 
 

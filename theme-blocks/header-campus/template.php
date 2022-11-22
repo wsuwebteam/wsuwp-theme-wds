@@ -1,7 +1,7 @@
 <header class="wsu-header-campus ">
 	<div class="wsu-header-campus__inner">
 		<div class="wsu-header-campus__banner">
-			<a href="#" class="wsu-logo-lockup  wsu-logo-lockup--style-campus">
+			<a href="https://pullman.wsu.edu" class="wsu-logo-lockup  wsu-logo-lockup--style-campus">
 				<span class="wsu-logo-lockup__icon-wrapper">
 					<svg role="img" aria-labelledby="wsu-coug-head__title" class="wsu-coug-head" enable-background="new 0 0 70.2 69.6" version="1.1" viewBox="0 0 70.2 69.6" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
 						<title id="wsu-coug-head__title">WSU Cougar Head Logo</title>
