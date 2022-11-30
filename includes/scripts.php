@@ -8,6 +8,8 @@ class Scripts {
 
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_scripts' ), 5 );
 
+		add_action( 'wp_head', array( __CLASS__, 'add_head_settings' ), 5 );
+
 	}
 
 	public static function enqueue_scripts() {
@@ -50,6 +52,17 @@ class Scripts {
 
 			wp_enqueue_script( 'jquery' );
 			
+		}
+
+	}
+
+
+	public static function add_head_settings() {
+
+		if ( WDS_Options::get( 'script_settings', 'outline_style', false ) ) {
+
+			echo "<style>@font-face { font-family: 'wsu-outline'; src: url('https://cdn.web.wsu.edu/css/Montserrat-Bold-static.ttf') format(\"opentype\"); }</style>";
+
 		}
 
 	}

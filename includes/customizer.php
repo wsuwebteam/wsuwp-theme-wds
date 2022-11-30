@@ -23,6 +23,8 @@ class Customizer {
 
 	public static function init() {
 
+		require_once get_template_directory() . '/classes/class-theme-customizer.php';
+
 		require_once get_template_directory() . '/customizer/customizer_social.php';
 		require_once get_template_directory() . '/customizer/customizer_contact.php';
 		require_once get_template_directory() . '/customizer/customizer_global_header.php';
@@ -39,6 +41,10 @@ class Customizer {
 		require_once get_template_directory() . '/customizer/customizer_template_category.php';
 		require_once get_template_directory() . '/customizer/customizer_template_taxonomy.php';
 		require_once get_template_directory() . '/customizer/customizer_template_tag.php';
+
+		// New Customizer Workflow
+
+		require_once get_template_directory() . '/customizer/customizer-theme-script-settings.php';
 
 		add_action( 'customize_register', array( __CLASS__, 'setup_customizer' ) );
 
@@ -97,6 +103,13 @@ class Customizer {
 		$customizers[] = new Customizer_Site_Footer( $wp_customize, $panel );
 		$customizers[] = new Customizer_Site_Navigation( $wp_customize, $panel );
 
+		// New Customizer Workflow
+
+		
+
+		$theme_script_settings = new Customizer_Theme_Script_Settings( $wp_customize );
+		$theme_script_settings->add_customizer();
+
 	}
 
 	public static function setup_template_customizer( $wp_customize ) {
@@ -130,14 +143,28 @@ class Customizer {
 
 		$panel = 'wds_theme_options_panel';
 
-		$wp_customize->add_panel(
-			$panel,
-			array(
-				'title' => __( 'WDS (Beta)' ),
-				'description' => 'Settings for WSU Web Design System Theme', // Include html tags such as <p>.
-				'priority' => 999999, // Mixed with top-level-section hierarchy.
-			)
-		);
+		if ( is_super_admin() ) {
+
+			$wp_customize->add_panel(
+				'wds_theme_options_panel',
+				array(
+					'title' => __( '(BETA) WDS Theme Options' ),
+					'description' => 'Settings for WSU Web Design System Theme', // Include html tags such as <p>.
+					'priority' => 999999, // Mixed with top-level-section hierarchy.
+				)
+			);
+
+			$wp_customize->add_panel(
+				'wds_settings_panel',
+				array(
+					'title' => __( '(BETA) WDS Settings' ),
+					'description' => 'Settings for WSU Web Design System Theme', // Include html tags such as <p>.
+					'priority' => 999999, // Mixed with top-level-section hierarchy.
+				)
+			);
+
+		}
+
 	}
 
 }
