@@ -2,6 +2,7 @@
 ?>
 <?php get_header(); ?>
 <?php get_template_part( 'template-component/component-global-header', 'single' ); ?>
+<?php Theme_Blocks::render_option( 'site_header' ); ?>
 <?php get_template_part( 'template-component/component-site-navigation-vertical', 'single' ); ?>
 <!-- SITE WRAPPER:START -->
 <div class="wsu-wrapper-site">
