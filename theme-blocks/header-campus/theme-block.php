@@ -6,7 +6,7 @@ class Theme_Block_Header_Campus extends Theme_Block {
 	protected static $panel_type   = 'theme';
 	protected static $option_slug  = 'theme_block_header_campus';
 	protected static $default_args = array(
-		'show'      => false,
+		'show'      => true,
 		'menuDepth' => 3,
 	);
 
