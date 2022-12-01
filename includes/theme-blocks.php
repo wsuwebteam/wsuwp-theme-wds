@@ -10,6 +10,7 @@ class Theme_Blocks {
 		require_once get_template_directory() . '/classes/class-block-customizer.php';
 
 		require_once get_template_directory() . '/theme-blocks/header-campus/theme-block.php';
+		require_once get_template_directory() . '/theme-blocks/header-system/theme-block.php';
 		require_once get_template_directory() . '/theme-blocks/header-global/theme-block.php';
 		require_once get_template_directory() . '/theme-blocks/header-quicklinks/theme-block.php';
 		require_once get_template_directory() . '/theme-blocks/navigation-vertical/theme-block.php';
@@ -25,6 +26,9 @@ class Theme_Blocks {
 			case 'header_campus':
 				Theme_Block_Header_Campus::render_block( $args );
 				break;
+			case 'header_system':
+				Theme_Block_Header_System::render_block( $args );
+				break;
 			case 'header_global':
 				Theme_Block_Header_Global::render_block( $args );
 				break;
@@ -37,6 +41,18 @@ class Theme_Blocks {
 			case 'header_quicklinks':
 				Theme_Block_Header_Quicklinks::render_block( $args );
 				break;
+
+		}
+
+	}
+
+	public static function render_option( $option_slug, $default_option = false, $args = array() ) {
+
+		$block_slug = WDS_Options::get( 'theme_options', $option_slug, $default_option );
+
+		if ( ! empty( $block_slug ) ) {
+
+			self::render( $block_slug, $args );
 
 		}
 
