@@ -45,6 +45,7 @@ class Customizer {
 		// New Customizer Workflow
 
 		require_once get_template_directory() . '/customizer/customizer-theme-script-settings.php';
+		require_once get_template_directory() . '/customizer/customizer-theme-general-options.php';
 
 		add_action( 'customize_register', array( __CLASS__, 'setup_customizer' ) );
 
@@ -105,10 +106,11 @@ class Customizer {
 
 		// New Customizer Workflow
 
-		
-
 		$theme_script_settings = new Customizer_Theme_Script_Settings( $wp_customize );
 		$theme_script_settings->add_customizer();
+
+		$theme_options = new Customizer_Theme_General_Options( $wp_customize );
+		$theme_options->add_customizer();
 
 	}
 
