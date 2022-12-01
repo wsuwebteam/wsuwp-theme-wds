@@ -3,6 +3,7 @@
 ?>
 <?php get_header(); ?>
 <?php get_template_part( 'template-component/component-global-header', '404' ); ?>
+<?php Theme_Blocks::render_option( 'site_header' ); ?>
 <?php get_template_part( 'template-component/component-site-navigation-vertical', '404' ); ?>
 <!-- SITE WRAPPER:START -->
 <div class="wsu-wrapper-site">

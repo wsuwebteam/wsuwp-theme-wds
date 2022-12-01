@@ -2,7 +2,7 @@
 <?php get_header(); ?>
 <?php get_template_part( 'template-component/component-global-header', 'home' ); ?>
 <?php Theme_Blocks::render( 'header_global' ); ?>
-<?php Theme_Blocks::render( 'header_campus' ); ?>
+<?php Theme_Blocks::render_option( 'site_header' ); ?>
 <?php Theme_Blocks::render( 'navigation_vertical' ); ?>
 <?php get_template_part( 'template-component/component-site-navigation-vertical', 'home' ); ?>
 <!-- SITE WRAPPER:START -->

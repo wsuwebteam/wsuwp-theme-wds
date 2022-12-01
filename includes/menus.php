@@ -21,9 +21,10 @@ class Menus {
 
 		register_nav_menus(
 			array(
-				'site'    => 'Site Navigation',
-				'footer'  => 'Footer Menu',
-				'offsite' => 'Offsite Menu',
+				'site'       => 'Site Navigation',
+				'footer'     => 'Footer Menu',
+				'offsite'    => 'Offsite Menu',
+				'quicklinks' => 'Quicklinks Menu',
 			)
 		);
 
