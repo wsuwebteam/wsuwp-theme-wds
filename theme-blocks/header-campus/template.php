@@ -19,7 +19,7 @@
 						Quicklinks / Search
 						<i class="wsu-header-utility-bar__icon"></i>
 					</button>
-					<a href="https://foundation.wsu.edu/give/" class="wsu-header-utility-bar__cta">Give</a>
+					<a href="https://foundation.wsu.edu/give/?utm_source=wsu-pullman&utm_medium=wsu-link&utm_campaign=wsu-pullman-referral" class="wsu-header-utility-bar__cta">Give</a>
 				</div>
 			</div>
 			<button class="wsu-button-menu wsu-slide-in-panel--open" data-panel="wsu-navigation-mobile" aria-label="Open Open Site Menu">Menu</button>
