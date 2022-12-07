@@ -96,11 +96,11 @@
 	<div class="wsu-header-system__top-bar">
 
 		<div class="wsu-menu-audience ">
-		<a href="https://admission.wsu.edu/visits/" class="wsu-menu-audience__link">
+		<a href="https://wsu.edu/campuses/" class="wsu-menu-audience__link">
 						Visit WSU
 			</a>
 			<hr class="wsu-menu-audience__mobile-separator" />
-			<a href="https://admission.wsu.edu/contact/request-info/" class="wsu-menu-audience__link">
+			<a href="https://wsu.edu/request-info/" class="wsu-menu-audience__link">
 				Request Info
 			</a>
 			<hr class="wsu-menu-audience__mobile-separator" />
