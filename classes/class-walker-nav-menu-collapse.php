@@ -7,7 +7,9 @@ class Walker_Nav_Menu_Collapse extends \Walker_Nav_Menu {
 
 		$this->menu_args = $args;
 
-		$this->in_context = true; 
+		$this->in_context = true;
+
+		$this->is_context_menu = $args['inContext'] ?? false;
 
 	}
 
@@ -62,7 +64,7 @@ class Walker_Nav_Menu_Collapse extends \Walker_Nav_Menu {
 
 			$output .= ( ! empty( $classes ) ) ? ' class="' . esc_attr( $classes ) . '"' : '';
 
-			if ( ! empty( $args->depth) && ( ( intval( $args->depth ) - 1 ) !== $depth ) ) {
+			if ( ! ( $this->is_context_menu && $depth == 0 ) ) {
 
 				$is_expanded = ( $this->is_expanded( $item ) ) ? 'true' : 'false';
 
@@ -139,7 +141,7 @@ class Walker_Nav_Menu_Collapse extends \Walker_Nav_Menu {
 
 				$output .= '</a>';
 
-				if ( ! empty( $args->depth) && ( ( intval( $args->depth ) - 1 ) !== $depth ) ) {
+				if ( ! ( $this->is_context_menu && $depth == 0 ) ) {
 
 					$button_label = ( $this->is_expanded( $item ) ) ? 'Close' : 'Open';
 
