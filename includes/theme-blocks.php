@@ -10,11 +10,14 @@ class Theme_Blocks {
 		require_once get_template_directory() . '/classes/class-block-customizer.php';
 
 		require_once get_template_directory() . '/theme-blocks/header-campus/theme-block.php';
-		require_once get_template_directory() . '/theme-blocks/header-system/theme-block.php';
 		require_once get_template_directory() . '/theme-blocks/header-global/theme-block.php';
+		require_once get_template_directory() . '/theme-blocks/header-system/theme-block.php';
 		require_once get_template_directory() . '/theme-blocks/header-quicklinks/theme-block.php';
-		require_once get_template_directory() . '/theme-blocks/navigation-vertical/theme-block.php';
+		require_once get_template_directory() . '/theme-blocks/header-unit/theme-block.php';
+		require_once get_template_directory() . '/theme-blocks/navigation-audience/theme-block.php';
 		require_once get_template_directory() . '/theme-blocks/navigation-mobile/theme-block.php';
+		require_once get_template_directory() . '/theme-blocks/navigation-vertical/theme-block.php';
+		
 
 	}
 
@@ -31,6 +34,12 @@ class Theme_Blocks {
 				break;
 			case 'header_global':
 				Theme_Block_Header_Global::render_block( $args );
+				break;
+			case 'header_unit':
+				Theme_Block_Header_Unit::render_block( $args );
+				break;
+			case 'navigation_audience':
+				Theme_Block_Navigation_Audience::render_block( $args );
 				break;
 			case 'navigation_vertical':
 				Theme_Block_Navigation_Vertical::render_block( $args );

@@ -66,14 +66,16 @@ class Theme_Block_Navigation_Vertical extends Theme_Block {
 			)
 		);
 
-		return apply_filters( 'wsu_wds_menu_html', ob_get_clean(), $args, $context, self::$block_slug );
+		$menu_html = ob_get_clean();
+
+		return apply_filters( 'wsu_wds_menu_html', $menu_html, $args, $context, self::$block_slug );
 
 	}
 
 
 	public static function check_menu_options( $menu_html, $args, $context, $block ) {
 
-		if ( $block === self::$block_slug ) {
+		if ( ( $block === self::$block_slug ) && ! empty( $args['inContext'] ) ) {
 
 			if ( ! strpos( $menu_html, 'sub-menu' ) ) {
 

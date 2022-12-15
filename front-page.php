@@ -18,6 +18,7 @@ $show_breadcrumbs = ( 'home' === $context ) ? false : true;
 <div class="wsu-wrapper-site">
 	<!-- SITE CONTAINER:START -->
 	<?php Template_Part::get( 'site-header', $context ); ?>
+	<?php Theme_Blocks::render( 'navigation_audience' ); ?>
 	<div class="wsu-wrapper-content <?php echo esc_attr( WDS_Options::get_option_class( 'template', 'width', 'wsu-wrapper-content--' ) ); ?>">
 		<?php do_action('wsu_wds_theme_before_main', $context); ?>
 		<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">

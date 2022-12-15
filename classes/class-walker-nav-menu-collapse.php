@@ -7,7 +7,7 @@ class Walker_Nav_Menu_Collapse extends \Walker_Nav_Menu {
 
 		$this->menu_args = $args;
 
-		$this->in_context = true;
+		$this->in_context = true; 
 
 	}
 
