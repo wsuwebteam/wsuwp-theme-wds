@@ -21,10 +21,13 @@ class Menus {
 
 		register_nav_menus(
 			array(
-				'site'       => 'Site Navigation',
-				'footer'     => 'Footer Menu',
-				'offsite'    => 'Offsite Menu',
-				'quicklinks' => 'Quicklinks Menu',
+				'site'            => 'Site Navigation',
+				'site_vertical'   => '(Beta) Vertical Site Navigation',
+				'site_horizontal' => '(Beta) Horizontal Site Navigation',
+				'audience'        => '(Beta) Audience',
+				'footer'          => 'Footer Menu',
+				'offsite'         => 'Offsite Menu',
+				'quicklinks'      => 'Quicklinks Menu',
 			)
 		);
 

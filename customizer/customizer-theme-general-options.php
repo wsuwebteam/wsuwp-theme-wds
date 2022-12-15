@@ -43,6 +43,7 @@ class Customizer_Theme_General_Options extends Theme_Customizer {
 					''              => 'None',
 					'header_system' => 'System Header',
 					'header_campus' => 'Campus Header',
+					'header_unit'   => 'Unit Header',
 				),
 			)
 		);
