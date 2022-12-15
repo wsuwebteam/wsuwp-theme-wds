@@ -4,7 +4,7 @@
 	<div class="wsu-slide-in-panel__panel ">
 		<div class="wsu-slide-in-panel__panel-inner">
 			<div class="wsu-navigation-vertical__menu-wrapper">
-			<?php echo wp_kses_post( $menu_html ); ?>
+			<?php echo $menu_html; ?>
 			</div>
 		</div>
 	</div>
