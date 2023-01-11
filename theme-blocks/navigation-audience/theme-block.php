@@ -8,6 +8,7 @@ class Theme_Block_Navigation_Audience extends Theme_Block {
 	protected static $option_slug  = 'theme_block_navigation_audience';
 	protected static $default_args = array(
 		'className'  => '',
+		'style'      => '',
 	);
 
 
