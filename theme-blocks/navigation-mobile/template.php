@@ -19,6 +19,22 @@
 					)
 				); ?>
 			</div>
+			<?php if ( has_nav_menu( 'audience' ) ) : ?>
+			<div class="wsu-navigation-mobile__audience">
+				<nav class="wsu-navigation-audience wsu-navigation-audience--style-vertical">
+					<div class="wsu-navigation-audience__label">Resources For:</div>
+					<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'audience',
+								'menu_class'     => 'wsu-navigation-audience__menu',
+								'container'      => '',
+							)
+						);
+					?>
+				</nav>
+			</div>
+			<?php endif; ?>
 		</div>
 	</div>
 </nav>
