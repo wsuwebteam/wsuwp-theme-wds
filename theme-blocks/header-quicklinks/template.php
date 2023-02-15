@@ -7,14 +7,22 @@
 					<button class="wsu-button  wsu-slide-in-panel--close wsu-button--style-action">Close Search</button>
 				</div>
 				<div class=" wsu-quicklinks__search">
+					<?php if ( ! empty( $args['local_search']) ) : ?>
+					<form class="wsu-search wsu-has-background--dark wsu-search--style-underline" method="get" action="<?php echo get_site_url(); ?>">
+						<div class="wsu-search__search-bar">
+							<input class="wsu-search__input" type="text" aria-lable="Search input" placeholder="Search" name="s">
+							<button class="wsu-search__submit" aria-lable="Submit Search"></button>
+						</div>
+					</form>
+					<?php else: ?>
 					<form class="wsu-search wsu-has-background--dark wsu-search--style-underline" method="get" action="https://search.wsu.edu">
 						<div class="wsu-search__search-bar">
 							<input type="hidden" name="sa" value="search">
 							<input class="wsu-search__input" type="text" aria-lable="Search input" placeholder="Search" name="q">
 							<button class="wsu-search__submit" aria-lable="Submit Search"></button>
 						</div>
-
 					</form>
+					<?php endif; ?>
 					<div class="wsu-decorator  wsu-decorator--style-lines-gray"></div>
 				</div>
 				<div class="wsu-quicklinks__content">

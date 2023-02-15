@@ -11,15 +11,12 @@ class WSU_Option {
 
 			if ( isset( $wsu_option[ $group ][ $key] ) ) {
 
-				if ( ! empty( $wsu_option[ $group ][ $key] ) ) {
+				return $wsu_option[ $group ][ $key];
 
-					return $wsu_option[ $group ][ $key];
+			} else {
 
-				} else {
+				return $default;
 
-					return $default;
-
-				}
 			}
 		} else {
 
