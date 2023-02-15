@@ -2,11 +2,17 @@
 ?>
 <?php get_header(); ?>
 <?php get_template_part( 'template-component/component-global-header', 'category' ); ?>
+<?php Theme_Blocks::render( 'header_global' ); ?>
+<?php Theme_Blocks::render_option( 'site_header' ); ?>
+<?php Theme_Blocks::render( 'navigation_mobile' ); ?>
+<?php Theme_Blocks::render( 'navigation_vertical' ); ?>
+<?php Theme_Blocks::render( 'header_quicklinks' ); ?>
 <?php get_template_part( 'template-component/component-site-navigation-vertical', 'category' ); ?>
 <!-- SITE WRAPPER:START -->
 <div class="wsu-wrapper-site">
 	<!-- SITE CONTAINER:START -->
 	<?php get_template_part( 'template-component/component-site-header', 'category' ); ?>
+	<?php Theme_Blocks::render( 'navigation_audience' ); ?>
 	<div class="wsu-wrapper-content <?php if ( Template::get_sidebar( 'wsu_wds_template_category_show_sidebar', 'sidebar_post' ) ) : ?>wsu-wrapper-content--layout-sidebar-right<?php endif; ?>" >
 		<?php do_action('wsu_wds_theme_before_main', 'category'); ?>
 		<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
