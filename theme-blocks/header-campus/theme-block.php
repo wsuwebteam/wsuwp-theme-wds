@@ -6,8 +6,9 @@ class Theme_Block_Header_Campus extends Theme_Block {
 	protected static $panel_type   = 'theme';
 	protected static $option_slug  = 'theme_block_header_campus';
 	protected static $default_args = array(
-		'show'      => true,
+		'show'      => false,
 		'menuDepth' => 3,
+		'give_link' => 'https://foundation.wsu.edu/give/?utm_source=wsu-edu&utm_medium=wsu-link&utm_campaign=wsu-referral',
 	);
 
 

@@ -1,11 +1,17 @@
 <?php namespace WSUWP\Theme\WDS; ?>
 <?php get_header(); ?>
 <?php get_template_part( 'template-component/component-global-header', 'index' ); ?>
+<?php Theme_Blocks::render( 'header_global' ); ?>
+<?php Theme_Blocks::render_option( 'site_header' ); ?>
+<?php Theme_Blocks::render( 'navigation_mobile' ); ?>
+<?php Theme_Blocks::render( 'navigation_vertical' ); ?>
+<?php Theme_Blocks::render( 'header_quicklinks' ); ?>
 <?php get_template_part( 'template-component/component-site-navigation-vertical', 'index' ); ?>
 <!-- SITE WRAPPER:START -->
 <div class="wsu-wrapper-site">
 	<!-- SITE CONTAINER:START -->
 	<?php get_template_part( 'template-component/component-site-header', 'archive' ); ?>
+	<?php Theme_Blocks::render( 'navigation_audience' ); ?>
 	<div class="wsu-wrapper-content <?php echo esc_attr( WDS_Options::get_option_class( 'template', 'width', 'wsu-wrapper-content--' ) ); ?>">
 		<?php do_action('wsu_wds_theme_before_main', 'index'); ?>
 		<main role="main" id="wsu-content" class="wsu-wrapper-main" tabindex="-1">
