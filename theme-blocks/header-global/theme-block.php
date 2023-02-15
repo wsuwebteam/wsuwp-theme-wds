@@ -7,7 +7,7 @@ class Theme_Block_Header_Global extends Theme_Block {
 	protected static $panel_type   = 'theme';
 	protected static $option_slug  = 'theme_block_header_global';
 	protected static $default_args = array(
-		'show'           => true,
+		'show'           => false,
 		'className'      => '',
 		'parent_name'    => '',
 		'parent_mobile'  => '',
