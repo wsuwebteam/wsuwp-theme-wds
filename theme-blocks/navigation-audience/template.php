@@ -1,5 +1,5 @@
 <nav class="wsu-navigation-audience ">
-	<div class="wsu-navigation-audience__label">Resources For:</div>
+	<div class="wsu-navigation-audience__label"><?php echo wp_get_nav_menu_name( 'audience' ); ?></div>
 	<?php
 		wp_nav_menu(
 			array(

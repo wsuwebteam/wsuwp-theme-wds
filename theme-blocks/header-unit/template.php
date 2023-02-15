@@ -18,8 +18,7 @@
 					Quicklinks / Search
 					<i class="wsu-header-utility-bar__icon"></i>
 				</button>
-				<a href="https://foundation.wsu.edu/" class="wsu-header-utility-bar__cta">Give</a>
-
+				<a href="<?php echo esc_url( $args['give_link'] ); ?>" class="wsu-header-utility-bar__cta">Give</a>
 			</div>
 			<button class="wsu-button-menu wsu-slide-in-panel--open" data-panel="wsu-navigation-mobile" aria-label="Open Open Site Menu">Menu</button>
 		</div>
