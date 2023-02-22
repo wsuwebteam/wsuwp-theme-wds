@@ -33,7 +33,13 @@ class Theme_Block_Header_Unit extends Theme_Block {
 
 	protected static function parse_options( &$args, $context ) {
 
-		$args['give_link'] = ( ! empty( $args['give_link'] ) ) ? $args['give_link'] : WSU_Option::get( 'site_options', 'give_link', 'https://foundation.wsu.edu/give/?utm_source=wsu-pullman&utm_medium=wsu-link&utm_campaign=wsu-pullman-referral' );
+		$give_link = WSU_Option::get( 'site_options', 'give_link', '' );
+
+		if ( ! empty( $give_link ) ) {
+
+			$args['give_link'] = $give_link;
+
+		}
 
 	}
 
