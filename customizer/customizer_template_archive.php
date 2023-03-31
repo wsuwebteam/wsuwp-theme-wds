@@ -119,6 +119,29 @@ class Customizer_Template_Archive {
 			)
 		);
 
+		$wp_customize->add_setting( 
+			"{$prefix}_post_archive_format", 
+			array( 
+				'capability' => 'edit_theme_options', 
+				'default'    => 'index', 
+			) 
+		);
+
+		$wp_customize->add_control( 
+			"{$prefix}_post_archive_format_control", 
+			array( 
+				'settings'    => "{$prefix}_post_archive_format", 
+				'type'        => 'select', 
+				'section'     => $this->section_id, 
+				'label'       => __( 'Display Format/Layout' ), 
+				'choices'     => array( 
+					'index' => 'Excerpts', 
+					'full-post'  => 'Full Post', 
+				) 
+			) 
+		); 
+ 
+
 		include __DIR__ . '/control-groups/customizer-meta-location-taxonomy.php';
 		include __DIR__ . '/control-groups/customizer-query-order.php';
 

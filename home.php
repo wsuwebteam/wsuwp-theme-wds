@@ -24,7 +24,7 @@
 			<?php do_action('wsu_wds_theme_after_header', 'home'); ?>
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php Template::get_template_part( 'template-parts/article', 'index', 'post-archive' ) ?>
+				<?php Template::get_template_part( 'template-parts/article', get_theme_mod( 'wsu_wds_template_post_archive_format', 'index' ), 'post-archive' ) ?>
 				<?php endwhile; ?>
 				<?php Template::get_template_part( 'template-component/component-pagination', 'post-archive' ); ?>
 			<?php endif; ?>

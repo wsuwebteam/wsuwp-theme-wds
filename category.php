@@ -28,7 +28,7 @@
 			<?php Template::get_template_part( 'template-parts/taxonomy-description', 'category' ); ?>
 			<?php if ( have_posts() ) : ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php Template::get_template_part( 'template-parts/article', 'index', 'category' ) ?>
+				<?php Template::get_template_part( 'template-parts/article', get_theme_mod( 'wsu_wds_template_category_format', 'index' ), 'category' ) ?>
 				<?php endwhile; ?>
 				<?php get_template_part( 'template-component/component-pagination', 'category' ); ?>
 			<?php endif; ?>

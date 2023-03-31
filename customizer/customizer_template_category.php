@@ -98,6 +98,28 @@ class Customizer_Template_Category {
 			)
 		);
 
+		$wp_customize->add_setting( 
+			"{$prefix}_{$context}_format", 
+			array( 
+				'capability' => 'edit_theme_options', 
+				'default'    => 'index', 
+			) 
+		); 
+ 
+		$wp_customize->add_control( 
+			"{$prefix}_{$context}_format_control", 
+			array( 
+				'settings'    => "{$prefix}_{$context}_format", 
+				'type'        => 'select', 
+				'section'     => $this->section_id, 
+				'label'       => __( 'Display Format/Layout' ), 
+				'choices'     => array( 
+					'index' => 'Excerpts', 
+					'full-post'  => 'Full Post', 
+				) 
+			) 
+		); 
+
 		include __DIR__ . '/control-groups/customizer-query-order.php';
 		include __DIR__ . '/control-groups/customizer-meta-location-taxonomy.php'; 
 
