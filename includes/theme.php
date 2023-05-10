@@ -1,10 +1,9 @@
 <?php namespace WSUWP\Theme\WDS;
 
-
 class Theme {
 
 
-	protected static $version = '1.7.8';
+	protected static $version = '1.7.9';
 
 
 	public static function get( $property ) {
@@ -27,10 +26,10 @@ class Theme {
 
 		require_once __DIR__ . '/context.php';
 		require_once __DIR__ . '/template-part.php';
-        require_once __DIR__ . '/templates.php';
+		require_once __DIR__ . '/templates.php';
 		require_once __DIR__ . '/scripts.php';
-        require_once __DIR__ . '/customizer.php';
-        require_once __DIR__ . '/menus.php';
+		require_once __DIR__ . '/customizer.php';
+		require_once __DIR__ . '/menus.php';
 		require_once __DIR__ . '/sidebars.php';
 		require_once __DIR__ . '/supports.php';
 		require_once __DIR__ . '/wds_options.php';
