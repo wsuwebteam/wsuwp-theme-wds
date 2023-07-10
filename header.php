@@ -18,3 +18,7 @@
 	<?php wp_body_open();?>
 	<!-- GLOBAL CONTAINER:START -->
 	<div class="wsu-wrapper-global">
+	<?php if ( is_active_sidebar( 'wsu_wds_before_header' ) ) : ?><div class="wsu-widget-area__before-header">
+		<?php dynamic_sidebar( 'wsu_wds_before_header' ); ?>
+	</div>
+<?php endif; ?>
